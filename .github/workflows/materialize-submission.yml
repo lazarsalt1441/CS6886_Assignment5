@@ -1,0 +1,45 @@
+name: Restore the approved assignment archive once
+on:
+  push:
+    branches: [main]
+    paths: [".submission_upload/manifest.json"]
+permissions:
+  contents: write
+jobs:
+  restore-fixed-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Restore only the archive explicitly approved by the repository owner
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, io, json, shutil, zipfile
+          from pathlib import Path
+          folder = Path(".submission_upload")
+          manifest = json.loads((folder / "manifest.json").read_text())
+          data = b"".join((folder / ("part%04d.bin" % i)).read_bytes() for i in range(manifest["part_count"]))
+          # Immutable SHA-256 of Assignment_5_CPU_Attention.zip approved in this conversation.
+          # Changing the payload or manifest cannot authorize any other archive or files.
+          assert hashlib.sha256(data).hexdigest() == "91565a5e7e2fb4fa97cfa0e3c47f7a494d92287d079083745b65488e537eacf5"
+          with zipfile.ZipFile(io.BytesIO(data)) as archive:
+              names = archive.namelist()
+              assert len(names) == 45
+              for name in names:
+                  path = Path(name)
+                  assert path.parts[0] == "attention_assignment" and ".." not in path.parts
+                  target = path.relative_to("attention_assignment")
+                  assert not target.is_symlink()
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(archive.read(name))
+          shutil.rmtree(folder)
+          Path(".github/workflows/materialize-submission.yml").unlink()
+          print("Restored the 45 files in the fixed approved archive; removed transfer helper.")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Complete CPU attention submission with original M1 results and report"
+          git push origin HEAD:main
+
