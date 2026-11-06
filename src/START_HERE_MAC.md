@@ -3,9 +3,9 @@
 Your hardware: MacBookAir10,1, Apple M1, 4 performance + 4 efficiency cores,
 8 physical / 8 logical cores, 16 GB unified memory.
 
-The new online kernels include an explicit AArch64 NEON fast path. The archived
-native run predates this optimisation. The current `report.pdf` is the owner's
-uploaded replacement; collect a fresh result ZIP before updating its speed claims.
+The online kernels include an explicit AArch64 NEON fast path. The submitted
+plots and CSV now use the completed native run of this revision.
+Its 40 timing configurations and 168 FP64 checks are verified against the source/input hashes.
 
 ## Run
 

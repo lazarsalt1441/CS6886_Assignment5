@@ -152,7 +152,7 @@ Achieved FMA rate, one/all cores: {dict(compute)[1]:.6f} / {dict(compute)[8]:.6f
 def measured_table(rows):
     return table(['Variant','$N$','$d$','Time (ms)','GFLOP/s',r'\% peak$^\ast$','vs naive'],[[r['variant'],r['N'],r['d'],f'{r["time_ms"]:.3f}',f'{r["gflops"]:.2f}',f'{r["percent_of_peak_model"]:.2f}',f'{r["speedup_over_naive"]:.2f}$\\times$'] for r in rows])
 
-def report(machine,rows,raw,edges,bw,compute):
+def report(machine,rows,raw,edges,bw,compute,data=None):
     best=get(rows,'best');omp=get(rows,'omp',t=8);naive=get(rows,'naive')
     b1=dict(bw)[1];b8=dict(bw)[8]
     head=r'''\documentclass[10pt,a4paper]{article}
@@ -165,6 +165,7 @@ def report(machine,rows,raw,edges,bw,compute):
 \begin{document}
 {\LARGE\bfseries Optimising attention on Apple M1}\par
 {\small Native MacBook Air measurements, 6 November 2026 \hfill CS6886, IIT Madras}
+\par{\small Code: \url{https://github.com/lazarsalt1441/CS6886_Assignment5}}
 '''
     s=head+f'''
 At $N=4096,d=64$, naive attention takes {naive['time_ms']:.3f} ms. The best single-threaded
@@ -209,7 +210,7 @@ $B_{{ref}}=4266\\times16/1000={BW_REFERENCE:.3f}$ GB/s. Memory type/rate come fr
 identification [4]; the bus width is an explicit model assumption, not a probe of physical
 LPDDR subchannels. A 384 MiB triad measures useful bandwidth as $B=12n/t$ (two reads plus
 one FP32 write), excluding cached-store write allocation. The one-thread rate is {b1:.3f} GB/s;
-the best is {max(v for _,v in bw):.3f} GB/s at two threads; eight threads give {b8:.3f} GB/s.
+the best is {max(v for _,v in bw):.3f} GB/s at {max(bw,key=lambda x:x[1])[0]} threads; eight threads give {b8:.3f} GB/s.
 Using measured bandwidth, the reference ridge points are $P_P/B_1={P_PEAK/b1:.3f}$ and
 $P_{{all}}/B_8={ALL_PEAK/b8:.3f}$ FLOP/B. With theoretical $B_{{ref}}$, they are
 {P_PEAK/BW_REFERENCE:.3f} and {ALL_PEAK/BW_REFERENCE:.3f} FLOP/B.
@@ -231,8 +232,8 @@ The baseline computes each score as a separate dot reduction. Strict FP32 summat
 a dependent addition chain. Its value product uses $i,k,j$ loops, so $V[jd+k]$ is read with
 a 256 B stride at $d=64$ and 512 B at $d=128$. The same probability row is traversed for
 every output feature. This wastes locality and exposes reductions rather than independent
-contiguous SIMD updates. These are code-based explanations; no per-stage timings or hardware
-miss counters were collected on the Mac, so exact shares are not claimed.
+contiguous SIMD updates. These are code-based explanations of naive; its phase shares and
+hardware cache-miss counters were not measured. The optimised kernels have separate phase profiles.
 
 \\textbf{{Protocol.}} Every original starter driver is preserved. Each invocation performs one warm-up
 and takes the median of five timed calls; the CSV is the median of three independently warmed
@@ -288,6 +289,23 @@ handle dimensions that do not divide the register or cache tile sizes.
 The remaining limits include FMA/load/broadcast throughput, softmax, packing, cache traffic
 and OS scheduling. Optional separate instrumented builds record phase shares and matrix
 throughput; these profiling timings are not substituted for uninstrumented CSV measurements.
+'''
+    config=machine.get('kernel_config',{})
+    if config.get('tuned'):
+        settings={flag.split('=',1)[0]:int(flag.split('=',1)[1]) for flag in config.get('best_flags',[])}
+        q=settings.get('-DATTENTION_QUERY_TILE',48);k=settings.get('-DATTENTION_KEY_TILE',128);rr=settings.get('-DATTENTION_REGISTER_ROWS',4)
+        s+=f'\\par The submitted native run selected a ${q}\\times{k}$ query/key cache tile and {rr} register rows, using {q*k*4/1024:.0f} KiB of score scratch per worker. These settings are shared by best and OpenMP.\n'
+    if data is not None and (data/'legacy_comparison.json').exists():
+        comp=json.loads((data/'legacy_comparison.json').read_text())
+        for r in comp:
+            if r['input']=='qkv_N4096_d64.bin':
+                s+=f"\\par Paired old/new comparison at $N=4096,d=64$, {esc(r['new_variant'])}: {r['previous_ms']:.3f} to {r['new_ms']:.3f} ms ({r['speedup']:.2f}$\\times$).\n"
+        s+='These separate three-trial comparisons alternate old/new order; they are not timings from different machines or substituted into the main table.\n'
+    if data is not None and (data/'phase_profiles.json').exists():
+        prof=json.loads((data/'phase_profiles.json').read_text())
+        p=next(x for x in prof if x['variant']=='best' and x['input']=='qkv_N4096_d64.bin')
+        s+=f"\\par For best at $N=4096,d=64$, the separate instrumented profile attributes {p['matmul_percent']:.2f}\\% to the two matrix products and {p['softmax_percent']:.2f}\\% to softmax/output normalisation. Score and value products achieve {p['scores_gflops']:.2f} and {p['values_gflops']:.2f} GFLOP/s. These figures include instrumentation overhead.\n"
+    s+=r'''
 \newpage
 \question{Q4. OpenMP}
 The same compute kernel and selected tile flags are used in \texttt{best} and \texttt{omp}.
@@ -377,8 +395,8 @@ to supply another complete native run. Regeneration validates source hashes and 
 
 Native evidence is under \path{src/evidence/mac_run/}. Local root paths are shortened
 for portability. The main CSV preserves the measured
-columns and adds clearly labelled reference-peak percentages. No earlier cloud timings,
-stage-profile figures or tuning measurements are mixed into the Mac report.
+columns and adds clearly labelled reference-peak percentages. No measurements from the
+separate x86 development run are used in the Mac report.
 \newpage
 \question{References and run trace}
 '''
@@ -399,15 +417,14 @@ stage-profile figures or tuning measurements are mixed into the Mac report.
       ['Measured','Native times, errors, cache sizes, RAM capacity, cores, compiler, triad/FMA rates'],
       ['Reference model','P/E instruction throughput and maximum operating points; LPDDR4X interface model'],
       ['Unavailable','Actual per-core placement and clocks under load, cache-miss counters, package power'],
-      ['Not inferred','Eight P cores; a guaranteed base/all-core frequency; per-stage timing shares'],
+      ['Not inferred','Eight P cores; a guaranteed base/all-core frequency'],
       ['Not established','Global optimality, definitive causes of every scaling fluctuation']],align='lp{111mm}',size='footnotesize')
     s+=r'''
 The full package retains the exact native C sources rather than substituting a subsequently
 modified kernel. To reproduce the submitted results, use the same compiler/flags and report
 all new timings when conditions change. The native runner prints its progress and fails if
 compilation or a numerical check fails. The original binary inputs remain under \texttt{input/}.
-The public GitHub URL is a submission step; it is not a performance result and must be supplied
-when the repository is published.
+The public submission repository is linked on the first page.
 \end{document}
 '''
     (ROOT/'src/report.tex').write_text(s)
@@ -426,7 +443,7 @@ def main():
         writer=csv.DictWriter(f,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
     (ROOT/'machine_spec.txt').write_text(machine_spec(machine,bw,compute))
     plots(rows,raw,bw,compute)
-    if not args.plots_only:report(machine,rows,raw,edges,bw,compute)
+    if not args.plots_only:report(machine,rows,raw,edges,bw,compute,data)
     print('Validated native data; generated CSV, machine specification, plots'+(' and report.' if not args.plots_only else '.'))
 
 if __name__=='__main__':main()

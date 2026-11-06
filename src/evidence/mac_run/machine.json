@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-11-06T12:28:26.442716+00:00",
+  "timestamp_utc": "2026-11-06T17:49:48.513571+00:00",
   "platform": "macOS-15.1.1-arm64-arm-64bit-Mach-O",
   "architecture": "arm64",
   "sysctl": {
@@ -79,5 +79,16 @@
     6,
     8
   ],
-  "trials_per_configuration": 3
+  "trials_per_configuration": 3,
+  "kernel_config": {
+    "best_flags": [
+      "-DATTENTION_QUERY_TILE=48",
+      "-DATTENTION_KEY_TILE=64",
+      "-DATTENTION_REGISTER_ROWS=4"
+    ],
+    "fused_query_tile": 48,
+    "fused_key_tile": 128,
+    "fused_register_rows": 4,
+    "tuned": true
+  }
 }

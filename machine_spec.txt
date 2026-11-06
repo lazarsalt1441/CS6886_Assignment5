@@ -17,16 +17,16 @@ L3 cache (size, shared by)      : N/A as a reported conventional CPU L3; system-
 Cache line size (bytes)         : 128 (native hw.cachelinesize)
 RAM size (GB)                   : 16 GiB = 17.179869184 decimal GB; unified memory
 RAM type, speed (MT/s), channels: Platform reference LPDDR4X-4266; 128-bit aggregate bus model (2 x 64-bit equivalent); physical subchannels not probed [4]
-Operating system                : macOS 15.1.1 (24B91), arm64, native execution
-Compiler and version            : Homebrew Clang 23.1.5; -O3 -mcpu=apple-m1 -fopenmp-simd; -fopenmp for omp
+Operating system                : ProductName:		macOS; ProductVersion:		15.1.1; BuildVersion:		24B91; arm64, native execution
+Compiler and version            : Homebrew clang version 23.1.5; -O3 -mcpu=apple-m1 -fopenmp-simd; -fopenmp for omp
 
 # Derived theoretical/reference values (upper bounds, not measured run clocks)
 Peak FP32 GFLOP/s, one core     : P=3.204 x 4 FMLA/cycle x 4 lanes x 2 = 102.528000; E=2.064 x 2 x 4 x 2 = 33.024000
 Peak FP32 GFLOP/s, all cores    : 4 x 102.528000 + 4 x 33.024000 = 542.208000
-Memory bandwidth (GB/s)         : Reference 4266 MT/s x (128/8) B = 68.256000; measured best=52.448753 at 2t
-Measured BW, one/eight threads  : 50.552259 / 42.990781 GB/s; useful bytes only, 384 MiB cached-store triad
-Ridge point, one core (FLOP/B)  : P/theoretical BW=1.502110; P/measured 1t BW=2.028159
-Ridge point, all cores (FLOP/B) : All/theoretical BW=7.943741; All/measured 8t BW=12.612192
-Achieved FMA rate, one/all cores: 58.076200 / 183.784177 GFLOP/s (separate workload, not a hard ceiling)
+Memory bandwidth (GB/s)         : Reference 4266 MT/s x (128/8) B = 68.256000; measured best=58.170009 at 1t
+Measured BW, one/eight threads  : 58.170009 / 47.935112 GB/s; useful bytes only, 384 MiB cached-store triad
+Ridge point, one core (FLOP/B)  : P/theoretical BW=1.502110; P/measured 1t BW=1.762558
+Ridge point, all cores (FLOP/B) : All/theoretical BW=7.943741; All/measured 8t BW=11.311291
+Achieved FMA rate, one/all cores: 61.472595 / 257.837915 GFLOP/s (separate workload, not a hard ceiling)
 
 # References: see report.pdf and src/references.md. No sustained clock is fabricated.

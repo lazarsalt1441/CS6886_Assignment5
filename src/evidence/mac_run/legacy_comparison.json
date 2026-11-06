@@ -1,0 +1,154 @@
+[
+  {
+    "input": "qkv_N1024_d64.bin",
+    "previous_variant": "legacy_fused",
+    "new_variant": "fused",
+    "previous_ms": 15.186,
+    "new_ms": 4.046,
+    "speedup": 3.7533366287691545,
+    "previous_samples_ms": [
+      16.136,
+      15.186,
+      15.004
+    ],
+    "new_samples_ms": [
+      4.047,
+      4.046,
+      4.039
+    ],
+    "relative_max_error": 2.4895253222068147e-06
+  },
+  {
+    "input": "qkv_N1024_d64.bin",
+    "previous_variant": "legacy_best",
+    "new_variant": "best",
+    "previous_ms": 4.5,
+    "new_ms": 3.718,
+    "speedup": 1.2103281334050564,
+    "previous_samples_ms": [
+      8.11,
+      4.5,
+      4.472
+    ],
+    "new_samples_ms": [
+      3.868,
+      3.718,
+      3.682
+    ],
+    "relative_max_error": 2.4354052065066668e-06
+  },
+  {
+    "input": "qkv_N2048_d64.bin",
+    "previous_variant": "legacy_fused",
+    "new_variant": "fused",
+    "previous_ms": 59.88,
+    "new_ms": 16.075,
+    "speedup": 3.725038880248834,
+    "previous_samples_ms": [
+      60.004,
+      59.88,
+      59.722
+    ],
+    "new_samples_ms": [
+      16.081,
+      15.973,
+      16.075
+    ],
+    "relative_max_error": 4.190567300856465e-06
+  },
+  {
+    "input": "qkv_N2048_d64.bin",
+    "previous_variant": "legacy_best",
+    "new_variant": "best",
+    "previous_ms": 18.125,
+    "new_ms": 14.694,
+    "speedup": 1.2334966653055668,
+    "previous_samples_ms": [
+      18.128,
+      18.108,
+      18.125
+    ],
+    "new_samples_ms": [
+      14.654,
+      14.699,
+      14.694
+    ],
+    "relative_max_error": 4.276970750358661e-06
+  },
+  {
+    "input": "qkv_N4096_d128.bin",
+    "previous_variant": "legacy_fused",
+    "new_variant": "fused",
+    "previous_ms": 387.089,
+    "new_ms": 116.368,
+    "speedup": 3.3264213529492643,
+    "previous_samples_ms": [
+      387.089,
+      387.608,
+      386.701
+    ],
+    "new_samples_ms": [
+      116.369,
+      116.05,
+      116.368
+    ],
+    "relative_max_error": 5.041044496104468e-06
+  },
+  {
+    "input": "qkv_N4096_d128.bin",
+    "previous_variant": "legacy_best",
+    "new_variant": "best",
+    "previous_ms": 129.467,
+    "new_ms": 105.49,
+    "speedup": 1.2272916864157741,
+    "previous_samples_ms": [
+      129.467,
+      129.415,
+      129.586
+    ],
+    "new_samples_ms": [
+      105.394,
+      105.49,
+      105.592
+    ],
+    "relative_max_error": 4.989074965216793e-06
+  },
+  {
+    "input": "qkv_N4096_d64.bin",
+    "previous_variant": "legacy_fused",
+    "new_variant": "fused",
+    "previous_ms": 240.963,
+    "new_ms": 63.724,
+    "speedup": 3.781353963969619,
+    "previous_samples_ms": [
+      240.839,
+      240.963,
+      241.324
+    ],
+    "new_samples_ms": [
+      63.724,
+      64.036,
+      63.621
+    ],
+    "relative_max_error": 6.242198073749665e-06
+  },
+  {
+    "input": "qkv_N4096_d64.bin",
+    "previous_variant": "legacy_best",
+    "new_variant": "best",
+    "previous_ms": 73.812,
+    "new_ms": 58.285,
+    "speedup": 1.2663978725229477,
+    "previous_samples_ms": [
+      73.877,
+      73.812,
+      73.788
+    ],
+    "new_samples_ms": [
+      58.337,
+      58.231,
+      58.285
+    ],
+    "relative_max_error": 6.143637051532565e-06
+  }
+]

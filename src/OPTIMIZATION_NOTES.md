@@ -1,9 +1,12 @@
 # Online attention update
 
 The baseline, all starter drivers, and the four official inputs are unchanged.
-`report.pdf` is the PDF uploaded by the owner. The existing main CSV, plots and
-native evidence describe the previous kernel; they are retained without relabelling.
-New M1 performance numbers require a fresh native run.
+The current main CSV, plots and `src/evidence/mac_run/` now use the
+verified native M1 run of this code. The measured best/omp configuration is
+48 query rows, 64 keys and four register rows; these flags are pinned in the
+Makefile and recorded in the native evidence. Fused remains 48x128/four rows.
+At N=4096,d=64, measured speedups over naive are 29.82x serial and 127.75x
+with eight threads. Historical revisions remain in Git history.
 
 ## Implementation
 

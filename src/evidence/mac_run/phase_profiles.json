@@ -1,0 +1,482 @@
+[
+  {
+    "variant": "fused",
+    "input": "qkv_N1024_d64.bin",
+    "representative": {
+      "pack_ms": 0.042,
+      "scores_ms": 2.748,
+      "softmax_ms": 1.171,
+      "values_ms": 2.439,
+      "total_ms": 6.422
+    },
+    "matmul_percent": 80.76923076923077,
+    "softmax_percent": 18.23419495484273,
+    "scores_gflops": 48.841967976710336,
+    "values_gflops": 55.02981877818778,
+    "raw": [
+      {
+        "pack_ms": 0.082,
+        "scores_ms": 3.637,
+        "softmax_ms": 1.533,
+        "values_ms": 3.348,
+        "total_ms": 8.651
+      },
+      {
+        "pack_ms": 0.054,
+        "scores_ms": 3.22,
+        "softmax_ms": 1.328,
+        "values_ms": 2.851,
+        "total_ms": 7.474
+      },
+      {
+        "pack_ms": 0.047,
+        "scores_ms": 2.936,
+        "softmax_ms": 1.231,
+        "values_ms": 2.571,
+        "total_ms": 6.813
+      },
+      {
+        "pack_ms": 0.042,
+        "scores_ms": 2.748,
+        "softmax_ms": 1.171,
+        "values_ms": 2.439,
+        "total_ms": 6.422
+      },
+      {
+        "pack_ms": 0.037,
+        "scores_ms": 2.501,
+        "softmax_ms": 1.048,
+        "values_ms": 2.206,
+        "total_ms": 5.808
+      },
+      {
+        "pack_ms": 0.037,
+        "scores_ms": 2.354,
+        "softmax_ms": 0.986,
+        "values_ms": 2.057,
+        "total_ms": 5.447
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "fused",
+    "input": "qkv_N2048_d64.bin",
+    "representative": {
+      "pack_ms": 0.053,
+      "scores_ms": 6.986,
+      "softmax_ms": 2.867,
+      "values_ms": 6.14,
+      "total_ms": 16.104
+    },
+    "matmul_percent": 81.5076999503229,
+    "softmax_percent": 17.803030303030305,
+    "scores_gflops": 76.84954365874606,
+    "values_gflops": 87.43825928338762,
+    "raw": [
+      {
+        "pack_ms": 0.087,
+        "scores_ms": 7.333,
+        "softmax_ms": 3.019,
+        "values_ms": 6.482,
+        "total_ms": 16.977
+      },
+      {
+        "pack_ms": 0.053,
+        "scores_ms": 6.986,
+        "softmax_ms": 2.867,
+        "values_ms": 6.14,
+        "total_ms": 16.104
+      },
+      {
+        "pack_ms": 0.079,
+        "scores_ms": 6.986,
+        "softmax_ms": 2.883,
+        "values_ms": 6.165,
+        "total_ms": 16.158
+      },
+      {
+        "pack_ms": 0.052,
+        "scores_ms": 6.973,
+        "softmax_ms": 2.865,
+        "values_ms": 6.117,
+        "total_ms": 16.053
+      },
+      {
+        "pack_ms": 0.051,
+        "scores_ms": 6.949,
+        "softmax_ms": 2.907,
+        "values_ms": 6.174,
+        "total_ms": 16.119
+      },
+      {
+        "pack_ms": 0.051,
+        "scores_ms": 6.971,
+        "softmax_ms": 2.859,
+        "values_ms": 6.149,
+        "total_ms": 16.073
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "fused",
+    "input": "qkv_N4096_d128.bin",
+    "representative": {
+      "pack_ms": 0.289,
+      "scores_ms": 56.041001,
+      "softmax_ms": 11.506,
+      "values_ms": 48.840999,
+      "total_ms": 116.892
+    },
+    "matmul_percent": 89.7255586353215,
+    "softmax_percent": 9.843274133388084,
+    "scores_gflops": 76.63973197052637,
+    "values_gflops": 87.93774459854926,
+    "raw": [
+      {
+        "pack_ms": 0.32,
+        "scores_ms": 56.418,
+        "softmax_ms": 11.488,
+        "values_ms": 49.009,
+        "total_ms": 117.483
+      },
+      {
+        "pack_ms": 0.378,
+        "scores_ms": 56.694001,
+        "softmax_ms": 11.633,
+        "values_ms": 49.428999,
+        "total_ms": 118.376
+      },
+      {
+        "pack_ms": 0.321,
+        "scores_ms": 55.962,
+        "softmax_ms": 11.53,
+        "values_ms": 48.689,
+        "total_ms": 116.717
+      },
+      {
+        "pack_ms": 0.287,
+        "scores_ms": 55.892,
+        "softmax_ms": 11.533,
+        "values_ms": 48.735,
+        "total_ms": 116.683
+      },
+      {
+        "pack_ms": 0.289,
+        "scores_ms": 56.041001,
+        "softmax_ms": 11.506,
+        "values_ms": 48.840999,
+        "total_ms": 116.892
+      },
+      {
+        "pack_ms": 0.317,
+        "scores_ms": 56.378,
+        "softmax_ms": 11.521,
+        "values_ms": 48.802,
+        "total_ms": 117.237
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "fused",
+    "input": "qkv_N4096_d64.bin",
+    "representative": {
+      "pack_ms": 0.105,
+      "scores_ms": 27.727,
+      "softmax_ms": 11.369,
+      "values_ms": 24.581001,
+      "total_ms": 63.991
+    },
+    "matmul_percent": 81.74274663624573,
+    "softmax_percent": 17.766560922629747,
+    "scores_gflops": 77.45099174090237,
+    "values_gflops": 87.3635556176089,
+    "raw": [
+      {
+        "pack_ms": 0.16,
+        "scores_ms": 27.868001,
+        "softmax_ms": 11.260999,
+        "values_ms": 24.725,
+        "total_ms": 64.205
+      },
+      {
+        "pack_ms": 0.155,
+        "scores_ms": 27.764,
+        "softmax_ms": 11.352,
+        "values_ms": 24.62,
+        "total_ms": 64.117
+      },
+      {
+        "pack_ms": 0.103,
+        "scores_ms": 27.848,
+        "softmax_ms": 11.268,
+        "values_ms": 24.581,
+        "total_ms": 63.983
+      },
+      {
+        "pack_ms": 0.104,
+        "scores_ms": 27.781,
+        "softmax_ms": 11.279,
+        "values_ms": 24.588,
+        "total_ms": 63.953
+      },
+      {
+        "pack_ms": 0.115,
+        "scores_ms": 27.827999,
+        "softmax_ms": 11.368,
+        "values_ms": 24.572,
+        "total_ms": 64.065
+      },
+      {
+        "pack_ms": 0.105,
+        "scores_ms": 27.727,
+        "softmax_ms": 11.369,
+        "values_ms": 24.581001,
+        "total_ms": 63.991
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "best",
+    "input": "qkv_N1024_d64.bin",
+    "representative": {
+      "pack_ms": 0.047,
+      "scores_ms": 2.595,
+      "softmax_ms": 1.329,
+      "values_ms": 2.815,
+      "total_ms": 6.833
+    },
+    "matmul_percent": 79.17459388262841,
+    "softmax_percent": 19.449729255085614,
+    "scores_gflops": 51.72166782273603,
+    "values_gflops": 47.679477087033746,
+    "raw": [
+      {
+        "pack_ms": 0.109,
+        "scores_ms": 3.872,
+        "softmax_ms": 1.963,
+        "values_ms": 4.479,
+        "total_ms": 10.503
+      },
+      {
+        "pack_ms": 0.055,
+        "scores_ms": 3.369,
+        "softmax_ms": 1.711,
+        "values_ms": 3.63,
+        "total_ms": 8.831
+      },
+      {
+        "pack_ms": 0.047,
+        "scores_ms": 2.949,
+        "softmax_ms": 1.514,
+        "values_ms": 3.198,
+        "total_ms": 7.756
+      },
+      {
+        "pack_ms": 0.047,
+        "scores_ms": 2.595,
+        "softmax_ms": 1.329,
+        "values_ms": 2.815,
+        "total_ms": 6.833
+      },
+      {
+        "pack_ms": 0.041,
+        "scores_ms": 2.436,
+        "softmax_ms": 1.247,
+        "values_ms": 2.632,
+        "total_ms": 6.402
+      },
+      {
+        "pack_ms": 0.036,
+        "scores_ms": 2.261001,
+        "softmax_ms": 1.162,
+        "values_ms": 2.454,
+        "total_ms": 5.949
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "best",
+    "input": "qkv_N2048_d64.bin",
+    "representative": {
+      "pack_ms": 0.045,
+      "scores_ms": 5.642,
+      "softmax_ms": 2.798,
+      "values_ms": 6.09,
+      "total_ms": 14.663
+    },
+    "matmul_percent": 80.01091181886379,
+    "softmax_percent": 19.08204323808225,
+    "scores_gflops": 95.15613470400567,
+    "values_gflops": 88.15614318555008,
+    "raw": [
+      {
+        "pack_ms": 0.084,
+        "scores_ms": 6.285,
+        "softmax_ms": 3.121,
+        "values_ms": 6.848,
+        "total_ms": 16.45
+      },
+      {
+        "pack_ms": 0.047,
+        "scores_ms": 5.782,
+        "softmax_ms": 2.894,
+        "values_ms": 6.266,
+        "total_ms": 15.083
+      },
+      {
+        "pack_ms": 0.045,
+        "scores_ms": 5.609,
+        "softmax_ms": 2.816,
+        "values_ms": 6.139,
+        "total_ms": 14.685
+      },
+      {
+        "pack_ms": 0.045,
+        "scores_ms": 5.626,
+        "softmax_ms": 2.801,
+        "values_ms": 6.095,
+        "total_ms": 14.652
+      },
+      {
+        "pack_ms": 0.045,
+        "scores_ms": 5.623,
+        "softmax_ms": 2.799,
+        "values_ms": 6.08,
+        "total_ms": 14.65
+      },
+      {
+        "pack_ms": 0.045,
+        "scores_ms": 5.642,
+        "softmax_ms": 2.798,
+        "values_ms": 6.09,
+        "total_ms": 14.663
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "best",
+    "input": "qkv_N4096_d128.bin",
+    "representative": {
+      "pack_ms": 0.273,
+      "scores_ms": 45.723,
+      "softmax_ms": 11.094,
+      "values_ms": 48.456,
+      "total_ms": 105.963
+    },
+    "matmul_percent": 88.8791370572747,
+    "softmax_percent": 10.469692251068768,
+    "scores_gflops": 93.93450333530171,
+    "values_gflops": 88.63643916130097,
+    "raw": [
+      {
+        "pack_ms": 0.324,
+        "scores_ms": 45.941,
+        "softmax_ms": 11.081999,
+        "values_ms": 48.727,
+        "total_ms": 106.504
+      },
+      {
+        "pack_ms": 0.303,
+        "scores_ms": 45.735,
+        "softmax_ms": 11.067999,
+        "values_ms": 48.487001,
+        "total_ms": 106.003
+      },
+      {
+        "pack_ms": 0.273,
+        "scores_ms": 45.723,
+        "softmax_ms": 11.094,
+        "values_ms": 48.456,
+        "total_ms": 105.963
+      },
+      {
+        "pack_ms": 0.272,
+        "scores_ms": 45.731001,
+        "softmax_ms": 11.051999,
+        "values_ms": 48.395,
+        "total_ms": 105.873
+      },
+      {
+        "pack_ms": 0.265,
+        "scores_ms": 45.982,
+        "softmax_ms": 11.098,
+        "values_ms": 48.746,
+        "total_ms": 106.545
+      },
+      {
+        "pack_ms": 0.35,
+        "scores_ms": 45.699999,
+        "softmax_ms": 11.063002,
+        "values_ms": 48.340999,
+        "total_ms": 105.891
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  },
+  {
+    "variant": "best",
+    "input": "qkv_N4096_d64.bin",
+    "representative": {
+      "pack_ms": 0.09,
+      "scores_ms": 22.604,
+      "softmax_ms": 11.053001,
+      "values_ms": 24.468999,
+      "total_ms": 58.61
+    },
+    "matmul_percent": 80.31564408803959,
+    "softmax_percent": 18.85855826650742,
+    "scores_gflops": 95.00458538311803,
+    "values_gflops": 87.76344500238854,
+    "raw": [
+      {
+        "pack_ms": 0.147,
+        "scores_ms": 22.551,
+        "softmax_ms": 11.046,
+        "values_ms": 24.508999,
+        "total_ms": 58.617
+      },
+      {
+        "pack_ms": 0.089,
+        "scores_ms": 22.805,
+        "softmax_ms": 11.087,
+        "values_ms": 24.578,
+        "total_ms": 58.962
+      },
+      {
+        "pack_ms": 0.181,
+        "scores_ms": 22.529,
+        "softmax_ms": 11.015,
+        "values_ms": 24.389,
+        "total_ms": 58.512
+      },
+      {
+        "pack_ms": 0.164,
+        "scores_ms": 22.561,
+        "softmax_ms": 10.992,
+        "values_ms": 24.53,
+        "total_ms": 58.675
+      },
+      {
+        "pack_ms": 0.09,
+        "scores_ms": 22.604,
+        "softmax_ms": 11.053001,
+        "values_ms": 24.468999,
+        "total_ms": 58.61
+      },
+      {
+        "pack_ms": 0.109,
+        "scores_ms": 22.524,
+        "softmax_ms": 11.012,
+        "values_ms": 24.45,
+        "total_ms": 58.454
+      }
+    ],
+    "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+  }
+]

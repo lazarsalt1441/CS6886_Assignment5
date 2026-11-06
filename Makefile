@@ -21,6 +21,8 @@ VARIANTS = naive loops tiled fused best omp
 .DEFAULT_GOAL := all
 OMP_NUM_THREADS ?= 8
 export OMP_NUM_THREADS
+# Native M1 setting selected by the submitted tile search.
+KERNEL_CFLAGS ?= -DATTENTION_QUERY_TILE=48 -DATTENTION_KEY_TILE=64 -DATTENTION_REGISTER_ROWS=4
 -include output/kernel_config.mk
 build/best build/omp: EXTRA_CFLAGS = $(KERNEL_CFLAGS)
 

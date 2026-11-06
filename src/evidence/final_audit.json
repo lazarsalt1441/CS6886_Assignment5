@@ -1,10 +1,16 @@
 {
-  "native_source_hashes_verified": 14,
+  "native_source_hashes_verified": 19,
   "original_drivers_unchanged": 6,
   "timing_configurations": 40,
   "driver_invocations_per_configuration": 3,
-  "independent_fp64_checks": 72,
-  "max_error_vs_naive": 4.730929066420798e-06,
+  "independent_fp64_checks": 168,
+  "max_error_vs_naive": 6.242198073749665e-06,
+  "max_error_vs_fp64": 3.057619818011489e-05,
   "benchmarks_recomputed_on_host": false,
-  "report_uses": "native M1 data only"
+  "selected_tile": [
+    48,
+    64,
+    4
+  ],
+  "measurement_uses": "Verified new native M1 data only"
 }

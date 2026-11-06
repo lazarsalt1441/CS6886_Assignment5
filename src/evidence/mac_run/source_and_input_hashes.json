@@ -4,13 +4,18 @@
   "input/qkv_N4096_d128.bin": "5e9871dee219045afafdf7d2b52ca14e521b1cbb33edf11e819411eee78a042b",
   "input/qkv_N4096_d64.bin": "c998ff2b771331864c8aabd721967989fd3e95f464d10535d19aeda0f1aee953",
   "src/attn_best.c": "f056535237dadc719d69f502eef7c02713a7da5969ebc419eab85a1678d61db4",
-  "src/attn_fused.c": "c42a7ccede8f73d00c0b2955d5f2b6c0b4561acdfda09c9673e09e84f9ad6571",
+  "src/attn_fused.c": "5e27f300ad3fc2e2a6de4e1b6ede05da9311be3fe78fabc96673297bdc8c035c",
   "src/attn_loops.c": "61a7be506cfbf97b09dd34a8157f40ce660e4b37824bf7c8a5b56438497ceca0",
   "src/attn_naive.c": "f67ef44428ed27118928503632ddf0bc41c5026f992cf1e6e156ad8f738d19f1",
   "src/attn_omp.c": "c34e4d1341d654b71abc74a1e0a5af99a15cd05b5da2258ae25ecc3ac462723a",
   "src/attn_tiled.c": "285e49fb5d34d02eb9a65df5b16c6196a61b5d662ebc84717a1c1da7c6a09ae3",
   "src/bandwidth.c": "9a9a10ebf5e497447d6c97e01390b36bdbd4e5cdeea9f9b2bab458548665f434",
   "src/compute_ceiling.c": "aa1a37ab80674f987adb3d0349f1352b8359c7bc147db43ededd0e3d04144613",
-  "src/best_kernel.h": "7b121d7005013c9e4fe4c86a08c7de2ab1f6a62479707a7804a2f0849490812d",
-  "src/neon_kernel.h": "cf7c80f13b6a5a5d36290ecc318936b806ffb9517753d16c4c9f9362272e26ca"
+  "src/best_kernel.h": "812338508a01e8a02fe7bd988be04c726770e6a0b35ac1c4f63634d289b65d47",
+  "src/neon_kernel.h": "cf7c80f13b6a5a5d36290ecc318936b806ffb9517753d16c4c9f9362272e26ca",
+  "src/online_kernel.h": "e73d0f7c9a2f0f28dce13dba7aedf384202110959435f4ff5df6ce703230cf15",
+  "src/macos_run.py": "0d499298a9861714ecd6303bd3a8b4e9bd57f8dfbe328bde1aeb8aecd86deb64",
+  "src/benchmark_tools.py": "8761fec5acc05121e63e5c39b9fae4f74ba268284bd02dfc627a70d44c4cf94d",
+  "src/edge_check.py": "6163189ff38e87184ec89e5dbc0994cd768a3b9a5169ade5c1e7effeac2decc0",
+  "src/check_outputs.py": "a15e138149b33c830dc9a99e62a0d172ef2423062b6fc8d608eb948730d57d62"
 }

@@ -1,0 +1,11 @@
+{
+  "best_flags": [
+    "-DATTENTION_QUERY_TILE=48",
+    "-DATTENTION_KEY_TILE=64",
+    "-DATTENTION_REGISTER_ROWS=4"
+  ],
+  "fused_query_tile": 48,
+  "fused_key_tile": 128,
+  "fused_register_rows": 4,
+  "tuned": true
+}

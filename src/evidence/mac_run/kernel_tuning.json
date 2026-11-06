@@ -1,0 +1,325 @@
+{
+  "selected_tile": [
+    48,
+    64,
+    4
+  ],
+  "selected_flags": [
+    "-DATTENTION_QUERY_TILE=48",
+    "-DATTENTION_KEY_TILE=64",
+    "-DATTENTION_REGISTER_ROWS=4"
+  ],
+  "method": "Minimum geometric mean of per-input median times; two reversed-order rounds",
+  "candidates": [
+    {
+      "tile": [
+        24,
+        64,
+        4
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=24",
+        "-DATTENTION_KEY_TILE=64",
+        "-DATTENTION_REGISTER_ROWS=4"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          3.933,
+          3.773
+        ],
+        "qkv_N2048_d64.bin": [
+          15.728,
+          14.903
+        ],
+        "qkv_N4096_d128.bin": [
+          140.757,
+          107.9
+        ],
+        "qkv_N4096_d64.bin": [
+          68.186,
+          59.439
+        ]
+      },
+      "geomean_ms": 26.15782684121353
+    },
+    {
+      "tile": [
+        48,
+        64,
+        4
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=48",
+        "-DATTENTION_KEY_TILE=64",
+        "-DATTENTION_REGISTER_ROWS=4"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          4.31,
+          3.738
+        ],
+        "qkv_N2048_d64.bin": [
+          15.923,
+          14.755
+        ],
+        "qkv_N4096_d128.bin": [
+          119.289,
+          107.109
+        ],
+        "qkv_N4096_d64.bin": [
+          65.265,
+          58.529
+        ]
+      },
+      "geomean_ms": 25.64435631380709
+    },
+    {
+      "tile": [
+        48,
+        128,
+        4
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=48",
+        "-DATTENTION_KEY_TILE=128",
+        "-DATTENTION_REGISTER_ROWS=4"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          4.339,
+          4.11
+        ],
+        "qkv_N2048_d64.bin": [
+          17.075,
+          16.252
+        ],
+        "qkv_N4096_d128.bin": [
+          152.077,
+          117.94
+        ],
+        "qkv_N4096_d64.bin": [
+          124.631,
+          64.154
+        ]
+      },
+      "geomean_ms": 30.775848488436164
+    },
+    {
+      "tile": [
+        48,
+        256,
+        4
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=48",
+        "-DATTENTION_KEY_TILE=256",
+        "-DATTENTION_REGISTER_ROWS=4"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          4.189,
+          4.061
+        ],
+        "qkv_N2048_d64.bin": [
+          17.545,
+          15.975
+        ],
+        "qkv_N4096_d128.bin": [
+          159.257,
+          120.562
+        ],
+        "qkv_N4096_d64.bin": [
+          80.602,
+          64.134
+        ]
+      },
+      "geomean_ms": 28.92497122159139
+    },
+    {
+      "tile": [
+        96,
+        128,
+        4
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=96",
+        "-DATTENTION_KEY_TILE=128",
+        "-DATTENTION_REGISTER_ROWS=4"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          5.049,
+          4.111
+        ],
+        "qkv_N2048_d64.bin": [
+          21.931,
+          16.2
+        ],
+        "qkv_N4096_d128.bin": [
+          156.293,
+          117.173
+        ],
+        "qkv_N4096_d64.bin": [
+          76.607,
+          64.458
+        ]
+      },
+      "geomean_ms": 30.293124821818523
+    },
+    {
+      "tile": [
+        24,
+        128,
+        6
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=24",
+        "-DATTENTION_KEY_TILE=128",
+        "-DATTENTION_REGISTER_ROWS=6"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          5.147,
+          4.797
+        ],
+        "qkv_N2048_d64.bin": [
+          20.336,
+          18.732
+        ],
+        "qkv_N4096_d128.bin": [
+          180.304,
+          139.249
+        ],
+        "qkv_N4096_d64.bin": [
+          82.569,
+          75.267
+        ]
+      },
+      "geomean_ms": 33.266171283827454
+    },
+    {
+      "tile": [
+        48,
+        64,
+        6
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=48",
+        "-DATTENTION_KEY_TILE=64",
+        "-DATTENTION_REGISTER_ROWS=6"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          5.578,
+          4.766
+        ],
+        "qkv_N2048_d64.bin": [
+          23.17,
+          18.686
+        ],
+        "qkv_N4096_d128.bin": [
+          143.604,
+          137.613
+        ],
+        "qkv_N4096_d64.bin": [
+          77.42,
+          74.625
+        ]
+      },
+      "geomean_ms": 32.797065814288956
+    },
+    {
+      "tile": [
+        48,
+        128,
+        6
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=48",
+        "-DATTENTION_KEY_TILE=128",
+        "-DATTENTION_REGISTER_ROWS=6"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          4.951,
+          4.846
+        ],
+        "qkv_N2048_d64.bin": [
+          19.546,
+          19.163
+        ],
+        "qkv_N4096_d128.bin": [
+          146.832,
+          138.809
+        ],
+        "qkv_N4096_d64.bin": [
+          78.673,
+          75.265
+        ]
+      },
+      "geomean_ms": 31.951250894929515
+    },
+    {
+      "tile": [
+        48,
+        256,
+        6
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=48",
+        "-DATTENTION_KEY_TILE=256",
+        "-DATTENTION_REGISTER_ROWS=6"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          5.015,
+          4.836
+        ],
+        "qkv_N2048_d64.bin": [
+          19.872,
+          18.906
+        ],
+        "qkv_N4096_d128.bin": [
+          146.544,
+          140.347
+        ],
+        "qkv_N4096_d64.bin": [
+          78.149,
+          75.511
+        ]
+      },
+      "geomean_ms": 32.02992147677203
+    },
+    {
+      "tile": [
+        96,
+        128,
+        6
+      ],
+      "flags": [
+        "-DATTENTION_QUERY_TILE=96",
+        "-DATTENTION_KEY_TILE=128",
+        "-DATTENTION_REGISTER_ROWS=6"
+      ],
+      "samples": {
+        "qkv_N1024_d64.bin": [
+          4.891,
+          4.814
+        ],
+        "qkv_N2048_d64.bin": [
+          20.102,
+          18.679
+        ],
+        "qkv_N4096_d128.bin": [
+          149.62,
+          137.815
+        ],
+        "qkv_N4096_d64.bin": [
+          74.534,
+          74.402
+        ]
+      },
+      "geomean_ms": 31.678052482404997
+    }
+  ]
+}

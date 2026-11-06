@@ -5,14 +5,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/output/mac_run_20261106_231948/build/naive",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/naive_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      110.795,
-      109.357,
-      106.147
+      105.851,
+      105.589,
+      105.7
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -27,14 +27,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/output/mac_run_20261106_231948/build/naive",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/naive_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      451.06,
-      455.166,
-      447.552
+      434.184,
+      426.806,
+      427.157
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -49,14 +49,14 @@
     "d": 128,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/output/mac_run_20261106_231948/build/naive",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/naive_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      3892.855,
-      3948.383,
-      3947.96
+      3715.476,
+      3710.6,
+      3715.327
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -71,14 +71,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/output/mac_run_20261106_231948/build/naive",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/naive_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      1845.16,
-      1826.749,
-      1836.944
+      1734.406,
+      1734.581,
+      1734.597
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -93,14 +93,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/output/mac_run_20261106_231948/build/loops",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/loops_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      15.824,
-      15.915,
-      16.0
+      16.572,
+      15.514,
+      15.487
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -115,14 +115,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/output/mac_run_20261106_231948/build/loops",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/loops_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      63.403,
-      62.165,
-      64.186
+      60.949,
+      60.892,
+      60.856
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -137,14 +137,14 @@
     "d": 128,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/output/mac_run_20261106_231948/build/loops",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/loops_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      420.213,
-      419.289,
-      403.212
+      394.288,
+      394.171,
+      394.217
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -159,14 +159,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/output/mac_run_20261106_231948/build/loops",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/loops_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      254.304,
-      260.753,
-      260.289
+      246.697,
+      246.901,
+      246.949
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -181,14 +181,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/output/mac_run_20261106_231948/build/tiled",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/tiled_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      14.37,
-      14.3,
-      16.234
+      13.58,
+      13.55,
+      13.514
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -203,14 +203,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/output/mac_run_20261106_231948/build/tiled",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/tiled_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      60.005,
-      60.489,
-      60.017
+      56.639,
+      56.586,
+      56.725
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -225,14 +225,14 @@
     "d": 128,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/output/mac_run_20261106_231948/build/tiled",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/tiled_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      422.245,
-      422.234,
-      424.037
+      399.539,
+      400.108,
+      399.361
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -247,14 +247,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/output/mac_run_20261106_231948/build/tiled",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/tiled_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      241.218,
-      239.65,
-      239.621
+      226.891,
+      225.478,
+      225.07
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -269,14 +269,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/output/mac_run_20261106_231948/build/fused",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/fused_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      15.778,
-      15.686,
-      15.761
+      7.309,
+      4.553,
+      4.065
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -291,14 +291,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/output/mac_run_20261106_231948/build/fused",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/fused_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      63.611,
-      63.077,
-      62.743
+      16.086,
+      15.995,
+      15.976
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -313,14 +313,14 @@
     "d": 128,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/output/mac_run_20261106_231948/build/fused",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/fused_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      421.148,
-      420.205,
-      434.853
+      115.952,
+      116.31,
+      116.136
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -335,14 +335,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/output/mac_run_20261106_231948/build/fused",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/fused_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      257.615,
-      271.943,
-      274.053
+      63.648,
+      63.841,
+      63.762
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -357,14 +357,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/output/mac_run_20261106_231948/build/best",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/best_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      4.825,
-      5.175,
-      5.692
+      5.547,
+      3.934,
+      3.735
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -379,14 +379,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/output/mac_run_20261106_231948/build/best",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/best_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      19.217,
-      19.385,
-      19.304
+      14.752,
+      14.71,
+      14.641
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -401,14 +401,14 @@
     "d": 128,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/output/mac_run_20261106_231948/build/best",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/best_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      145.233,
-      137.706,
-      135.25
+      105.513,
+      105.477,
+      105.322
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -423,14 +423,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/output/mac_run_20261106_231948/build/best",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/best_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      79.84,
-      81.288,
-      80.528
+      58.254,
+      58.175,
+      58.168
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -445,14 +445,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      6.031,
-      4.832,
-      4.76
+      6.907,
+      4.28,
+      3.758
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -467,14 +467,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      19.073,
-      19.094,
-      18.883
+      14.822,
+      14.741,
+      14.729
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -489,14 +489,14 @@
     "d": 128,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      156.046,
-      146.068,
-      155.675
+      105.461,
+      105.246,
+      105.389
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -511,14 +511,14 @@
     "d": 64,
     "threads": 1,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      79.571,
-      83.119,
-      83.879
+      58.537,
+      58.588,
+      58.432
     ],
     "environment": {
       "OMP_NUM_THREADS": "1",
@@ -533,14 +533,14 @@
     "d": 64,
     "threads": 2,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      2.97,
-      2.668,
-      2.477
+      2.011,
+      1.997,
+      1.992
     ],
     "environment": {
       "OMP_NUM_THREADS": "2",
@@ -555,14 +555,14 @@
     "d": 64,
     "threads": 2,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      11.031,
-      11.168,
-      10.642
+      7.791,
+      7.742,
+      7.754
     ],
     "environment": {
       "OMP_NUM_THREADS": "2",
@@ -577,14 +577,14 @@
     "d": 128,
     "threads": 2,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      83.126,
-      91.341,
-      85.504
+      54.394,
+      57.292,
+      57.444
     ],
     "environment": {
       "OMP_NUM_THREADS": "2",
@@ -599,14 +599,14 @@
     "d": 64,
     "threads": 2,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      48.521,
-      72.518,
-      48.953
+      31.056,
+      31.61,
+      30.539
     ],
     "environment": {
       "OMP_NUM_THREADS": "2",
@@ -621,14 +621,14 @@
     "d": 64,
     "threads": 4,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      1.838,
-      1.802,
-      1.93
+      1.147,
+      1.144,
+      1.143
     ],
     "environment": {
       "OMP_NUM_THREADS": "4",
@@ -643,14 +643,14 @@
     "d": 64,
     "threads": 4,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      8.099,
-      8.239,
-      8.824
+      4.105,
+      4.115,
+      4.099
     ],
     "environment": {
       "OMP_NUM_THREADS": "4",
@@ -665,14 +665,14 @@
     "d": 128,
     "threads": 4,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      60.493,
-      59.697,
-      61.768
+      30.662,
+      31.719,
+      31.956
     ],
     "environment": {
       "OMP_NUM_THREADS": "4",
@@ -687,14 +687,14 @@
     "d": 64,
     "threads": 4,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      40.063,
-      33.71,
-      32.012
+      17.002,
+      17.043,
+      17.064
     ],
     "environment": {
       "OMP_NUM_THREADS": "4",
@@ -709,14 +709,14 @@
     "d": 64,
     "threads": 6,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      1.777,
-      1.613,
-      1.615
+      1.13,
+      1.034,
+      1.194
     ],
     "environment": {
       "OMP_NUM_THREADS": "6",
@@ -731,14 +731,14 @@
     "d": 64,
     "threads": 6,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      10.761,
-      9.52,
-      7.921
+      3.613,
+      3.562,
+      3.607
     ],
     "environment": {
       "OMP_NUM_THREADS": "6",
@@ -753,14 +753,14 @@
     "d": 128,
     "threads": 6,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      44.772,
-      69.514,
-      64.284
+      27.293,
+      27.266,
+      27.499
     ],
     "environment": {
       "OMP_NUM_THREADS": "6",
@@ -775,14 +775,14 @@
     "d": 64,
     "threads": 6,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      29.794,
-      31.112,
-      37.328
+      14.495,
+      15.051,
+      14.956
     ],
     "environment": {
       "OMP_NUM_THREADS": "6",
@@ -797,14 +797,14 @@
     "d": 64,
     "threads": 8,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N1024_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N1024_d64.bin"
     ],
     "trial_times_ms": [
-      1.592,
-      1.653,
-      1.522
+      1.077,
+      0.979,
+      1.059
     ],
     "environment": {
       "OMP_NUM_THREADS": "8",
@@ -819,14 +819,14 @@
     "d": 64,
     "threads": 8,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N2048_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N2048_d64.bin"
     ],
     "trial_times_ms": [
-      7.664,
-      5.773,
-      5.741
+      3.393,
+      3.339,
+      3.498
     ],
     "environment": {
       "OMP_NUM_THREADS": "8",
@@ -841,14 +841,14 @@
     "d": 128,
     "threads": 8,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d128.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d128.bin"
     ],
     "trial_times_ms": [
-      59.024,
-      57.451,
-      51.243
+      24.475,
+      25.309,
+      24.851
     ],
     "environment": {
       "OMP_NUM_THREADS": "8",
@@ -863,14 +863,14 @@
     "d": 64,
     "threads": 8,
     "command": [
-      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/output/mac_run_20261106_231948/build/omp",
       "<assignment_root>/input/qkv_N4096_d64.bin",
-      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+      "<assignment_root>/output/mac_run_20261106_231948/outputs/omp_qkv_N4096_d64.bin"
     ],
     "trial_times_ms": [
-      26.335,
-      32.448,
-      25.365
+      13.109,
+      13.578,
+      14.623
     ],
     "environment": {
       "OMP_NUM_THREADS": "8",
