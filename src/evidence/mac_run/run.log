@@ -1,0 +1,408 @@
+Native Apple M1 CPU attention run
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp-simd -Wall -Wextra -Wno-unknown-pragmas -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/attn_naive.c -o <assignment_root>/output/mac_run_20261106_175826/build/naive -lm -lomp
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp-simd -Wall -Wextra -Wno-unknown-pragmas -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/attn_loops.c -o <assignment_root>/output/mac_run_20261106_175826/build/loops -lm -lomp
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp-simd -Wall -Wextra -Wno-unknown-pragmas -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/attn_tiled.c -o <assignment_root>/output/mac_run_20261106_175826/build/tiled -lm -lomp
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp-simd -Wall -Wextra -Wno-unknown-pragmas -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/attn_fused.c -o <assignment_root>/output/mac_run_20261106_175826/build/fused -lm -lomp
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp-simd -Wall -Wextra -Wno-unknown-pragmas -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/attn_best.c -o <assignment_root>/output/mac_run_20261106_175826/build/best -lm -lomp
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp-simd -Wall -Wextra -Wno-unknown-pragmas -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib -fopenmp <assignment_root>/src/attn_omp.c -o <assignment_root>/output/mac_run_20261106_175826/build/omp -lm -lomp
+ld: warning: ignoring duplicate libraries: '-lomp'
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/bandwidth.c -o <assignment_root>/output/mac_run_20261106_175826/build/bandwidth
+
+$ /opt/homebrew/opt/llvm/bin/clang -O3 -mcpu=apple-m1 -fopenmp -I/opt/homebrew/opt/libomp/include -L/opt/homebrew/opt/libomp/lib -Wl,-rpath,/opt/homebrew/opt/libomp/lib <assignment_root>/src/compute_ceiling.c -o <assignment_root>/output/mac_run_20261106_175826/build/compute_ceiling
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N1024_d64.bin
+naive              N=1024  d=64   threads=1   time_ms=   110.795  GFLOP/s=    2.42
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N1024_d64.bin
+naive              N=1024  d=64   threads=1   time_ms=   109.357  GFLOP/s=    2.45
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N1024_d64.bin
+naive              N=1024  d=64   threads=1   time_ms=   106.147  GFLOP/s=    2.53
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N2048_d64.bin
+naive              N=2048  d=64   threads=1   time_ms=   451.060  GFLOP/s=    2.38
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N2048_d64.bin
+naive              N=2048  d=64   threads=1   time_ms=   455.166  GFLOP/s=    2.36
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N2048_d64.bin
+naive              N=2048  d=64   threads=1   time_ms=   447.552  GFLOP/s=    2.40
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d128.bin
+naive              N=4096  d=128  threads=1   time_ms=  3892.855  GFLOP/s=    2.21
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d128.bin
+naive              N=4096  d=128  threads=1   time_ms=  3948.383  GFLOP/s=    2.18
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d128.bin
+naive              N=4096  d=128  threads=1   time_ms=  3947.960  GFLOP/s=    2.18
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d64.bin
+naive              N=4096  d=64   threads=1   time_ms=  1845.160  GFLOP/s=    2.33
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d64.bin
+naive              N=4096  d=64   threads=1   time_ms=  1826.749  GFLOP/s=    2.35
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/naive <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d64.bin
+naive              N=4096  d=64   threads=1   time_ms=  1836.944  GFLOP/s=    2.34
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N1024_d64.bin
+loops              N=1024  d=64   threads=1   time_ms=    15.824  GFLOP/s=   16.96
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N1024_d64.bin
+loops              N=1024  d=64   threads=1   time_ms=    15.915  GFLOP/s=   16.87
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N1024_d64.bin
+loops              N=1024  d=64   threads=1   time_ms=    16.000  GFLOP/s=   16.78
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N2048_d64.bin
+loops              N=2048  d=64   threads=1   time_ms=    63.403  GFLOP/s=   16.94
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N2048_d64.bin
+loops              N=2048  d=64   threads=1   time_ms=    62.165  GFLOP/s=   17.27
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N2048_d64.bin
+loops              N=2048  d=64   threads=1   time_ms=    64.186  GFLOP/s=   16.73
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d128.bin
+loops              N=4096  d=128  threads=1   time_ms=   420.213  GFLOP/s=   20.44
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d128.bin
+loops              N=4096  d=128  threads=1   time_ms=   419.289  GFLOP/s=   20.49
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d128.bin
+loops              N=4096  d=128  threads=1   time_ms=   403.212  GFLOP/s=   21.30
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d64.bin
+loops              N=4096  d=64   threads=1   time_ms=   254.304  GFLOP/s=   16.89
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d64.bin
+loops              N=4096  d=64   threads=1   time_ms=   260.753  GFLOP/s=   16.47
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/loops <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d64.bin
+loops              N=4096  d=64   threads=1   time_ms=   260.289  GFLOP/s=   16.50
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N1024_d64.bin
+tiled              N=1024  d=64   threads=1   time_ms=    14.370  GFLOP/s=   18.68
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N1024_d64.bin
+tiled              N=1024  d=64   threads=1   time_ms=    14.300  GFLOP/s=   18.77
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N1024_d64.bin
+tiled              N=1024  d=64   threads=1   time_ms=    16.234  GFLOP/s=   16.54
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N2048_d64.bin
+tiled              N=2048  d=64   threads=1   time_ms=    60.005  GFLOP/s=   17.89
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N2048_d64.bin
+tiled              N=2048  d=64   threads=1   time_ms=    60.489  GFLOP/s=   17.75
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N2048_d64.bin
+tiled              N=2048  d=64   threads=1   time_ms=    60.017  GFLOP/s=   17.89
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d128.bin
+tiled              N=4096  d=128  threads=1   time_ms=   422.245  GFLOP/s=   20.34
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d128.bin
+tiled              N=4096  d=128  threads=1   time_ms=   422.234  GFLOP/s=   20.34
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d128.bin
+tiled              N=4096  d=128  threads=1   time_ms=   424.037  GFLOP/s=   20.26
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d64.bin
+tiled              N=4096  d=64   threads=1   time_ms=   241.218  GFLOP/s=   17.81
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d64.bin
+tiled              N=4096  d=64   threads=1   time_ms=   239.650  GFLOP/s=   17.92
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/tiled <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d64.bin
+tiled              N=4096  d=64   threads=1   time_ms=   239.621  GFLOP/s=   17.92
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N1024_d64.bin
+fused              N=1024  d=64   threads=1   time_ms=    15.778  GFLOP/s=   17.01
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N1024_d64.bin
+fused              N=1024  d=64   threads=1   time_ms=    15.686  GFLOP/s=   17.11
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N1024_d64.bin
+fused              N=1024  d=64   threads=1   time_ms=    15.761  GFLOP/s=   17.03
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N2048_d64.bin
+fused              N=2048  d=64   threads=1   time_ms=    63.611  GFLOP/s=   16.88
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N2048_d64.bin
+fused              N=2048  d=64   threads=1   time_ms=    63.077  GFLOP/s=   17.02
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N2048_d64.bin
+fused              N=2048  d=64   threads=1   time_ms=    62.743  GFLOP/s=   17.11
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d128.bin
+fused              N=4096  d=128  threads=1   time_ms=   421.148  GFLOP/s=   20.40
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d128.bin
+fused              N=4096  d=128  threads=1   time_ms=   420.205  GFLOP/s=   20.44
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d128.bin
+fused              N=4096  d=128  threads=1   time_ms=   434.853  GFLOP/s=   19.75
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d64.bin
+fused              N=4096  d=64   threads=1   time_ms=   257.615  GFLOP/s=   16.67
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d64.bin
+fused              N=4096  d=64   threads=1   time_ms=   271.943  GFLOP/s=   15.79
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/fused <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d64.bin
+fused              N=4096  d=64   threads=1   time_ms=   274.053  GFLOP/s=   15.67
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N1024_d64.bin
+best               N=1024  d=64   threads=1   time_ms=     4.825  GFLOP/s=   55.63
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N1024_d64.bin
+best               N=1024  d=64   threads=1   time_ms=     5.175  GFLOP/s=   51.87
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N1024_d64.bin
+best               N=1024  d=64   threads=1   time_ms=     5.692  GFLOP/s=   47.16
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N2048_d64.bin
+best               N=2048  d=64   threads=1   time_ms=    19.217  GFLOP/s=   55.87
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N2048_d64.bin
+best               N=2048  d=64   threads=1   time_ms=    19.385  GFLOP/s=   55.39
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N2048_d64.bin
+best               N=2048  d=64   threads=1   time_ms=    19.304  GFLOP/s=   55.62
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d128.bin
+best               N=4096  d=128  threads=1   time_ms=   145.233  GFLOP/s=   59.15
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d128.bin
+best               N=4096  d=128  threads=1   time_ms=   137.706  GFLOP/s=   62.38
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d128.bin
+best               N=4096  d=128  threads=1   time_ms=   135.250  GFLOP/s=   63.51
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d64.bin
+best               N=4096  d=64   threads=1   time_ms=    79.840  GFLOP/s=   53.79
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d64.bin
+best               N=4096  d=64   threads=1   time_ms=    81.288  GFLOP/s=   52.84
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/best <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d64.bin
+best               N=4096  d=64   threads=1   time_ms=    80.528  GFLOP/s=   53.34
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=1   time_ms=     6.031  GFLOP/s=   44.51
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=1   time_ms=     4.832  GFLOP/s=   55.55
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=1   time_ms=     4.760  GFLOP/s=   56.39
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=1   time_ms=    19.073  GFLOP/s=   56.30
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=1   time_ms=    19.094  GFLOP/s=   56.23
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=1   time_ms=    18.883  GFLOP/s=   56.86
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=1   time_ms=   156.046  GFLOP/s=   55.05
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=1   time_ms=   146.068  GFLOP/s=   58.81
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=1   time_ms=   155.675  GFLOP/s=   55.18
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=1   time_ms=    79.571  GFLOP/s=   53.98
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=1   time_ms=    83.119  GFLOP/s=   51.67
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=1   time_ms=    83.879  GFLOP/s=   51.20
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=2   time_ms=     2.970  GFLOP/s=   90.38
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=2   time_ms=     2.668  GFLOP/s=  100.61
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=2   time_ms=     2.477  GFLOP/s=  108.37
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=2   time_ms=    11.031  GFLOP/s=   97.34
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=2   time_ms=    11.168  GFLOP/s=   96.14
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=2   time_ms=    10.642  GFLOP/s=  100.90
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=2   time_ms=    83.126  GFLOP/s=  103.34
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=2   time_ms=    91.341  GFLOP/s=   94.04
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=2   time_ms=    85.504  GFLOP/s=  100.46
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=2   time_ms=    48.521  GFLOP/s=   88.52
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=2   time_ms=    72.518  GFLOP/s=   59.23
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=2   time_ms=    48.953  GFLOP/s=   87.74
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=4   time_ms=     1.838  GFLOP/s=  146.05
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=4   time_ms=     1.802  GFLOP/s=  148.97
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=4   time_ms=     1.930  GFLOP/s=  139.09
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=4   time_ms=     8.099  GFLOP/s=  132.58
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=4   time_ms=     8.239  GFLOP/s=  130.32
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=4   time_ms=     8.824  GFLOP/s=  121.68
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=4   time_ms=    60.493  GFLOP/s=  142.00
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=4   time_ms=    59.697  GFLOP/s=  143.89
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=4   time_ms=    61.768  GFLOP/s=  139.07
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=4   time_ms=    40.063  GFLOP/s=  107.21
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=4   time_ms=    33.710  GFLOP/s=  127.41
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=4   time_ms=    32.012  GFLOP/s=  134.17
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=6   time_ms=     1.777  GFLOP/s=  151.06
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=6   time_ms=     1.613  GFLOP/s=  166.42
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=6   time_ms=     1.615  GFLOP/s=  166.21
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=6   time_ms=    10.761  GFLOP/s=   99.78
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=6   time_ms=     9.520  GFLOP/s=  112.79
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=6   time_ms=     7.921  GFLOP/s=  135.56
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=6   time_ms=    44.772  GFLOP/s=  191.86
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=6   time_ms=    69.514  GFLOP/s=  123.57
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=6   time_ms=    64.284  GFLOP/s=  133.62
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=6   time_ms=    29.794  GFLOP/s=  144.16
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=6   time_ms=    31.112  GFLOP/s=  138.05
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=6   time_ms=    37.328  GFLOP/s=  115.06
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=8   time_ms=     1.592  GFLOP/s=  168.62
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=8   time_ms=     1.653  GFLOP/s=  162.39
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N1024_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin
+omp                N=1024  d=64   threads=8   time_ms=     1.522  GFLOP/s=  176.37
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=8   time_ms=     7.664  GFLOP/s=  140.10
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=8   time_ms=     5.773  GFLOP/s=  185.99
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N2048_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin
+omp                N=2048  d=64   threads=8   time_ms=     5.741  GFLOP/s=  187.03
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=8   time_ms=    59.024  GFLOP/s=  145.53
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=8   time_ms=    57.451  GFLOP/s=  149.52
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d128.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin
+omp                N=4096  d=128  threads=8   time_ms=    51.243  GFLOP/s=  167.63
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=8   time_ms=    26.335  GFLOP/s=  163.09
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=8   time_ms=    32.448  GFLOP/s=  132.36
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/omp <assignment_root>/input/qkv_N4096_d64.bin <assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin
+omp                N=4096  d=64   threads=8   time_ms=    25.365  GFLOP/s=  169.33
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/bandwidth
+threads=1 median_s=0.007965088 bandwidth_gbs=50.552259 checksum=236894290.351539
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/bandwidth
+threads=2 median_s=0.007677078 bandwidth_gbs=52.448753 checksum=236894290.351539
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/bandwidth
+threads=4 median_s=0.009302139 bandwidth_gbs=43.286084 checksum=236894290.351539
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/bandwidth
+threads=6 median_s=0.009148836 bandwidth_gbs=44.011411 checksum=236894290.351539
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/bandwidth
+threads=8 median_s=0.009366035 bandwidth_gbs=42.990781 checksum=236894290.351539
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/compute_ceiling
+threads=1 median_s=0.017632008 achieved_fma_gflops=58.076200 checksum=367.673583984
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/compute_ceiling
+threads=2 median_s=0.021830797 achieved_fma_gflops=93.812424 checksum=735.347167969
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/compute_ceiling
+threads=4 median_s=0.031013012 achieved_fma_gflops=132.073596 checksum=1470.694335938
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/compute_ceiling
+threads=6 median_s=0.038047791 achieved_fma_gflops=161.481125 checksum=2206.041503906
+
+$ <assignment_root>/output/mac_run_20261106_175826/build/compute_ceiling
+threads=8 median_s=0.044574022 achieved_fma_gflops=183.784177 checksum=2941.388671875
+

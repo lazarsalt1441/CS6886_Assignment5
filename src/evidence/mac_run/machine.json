@@ -1,0 +1,83 @@
+{
+  "timestamp_utc": "2026-11-06T12:28:26.442716+00:00",
+  "platform": "macOS-15.1.1-arm64-arm-64bit-Mach-O",
+  "architecture": "arm64",
+  "sysctl": {
+    "machdep.cpu.brand_string": "Apple M1",
+    "hw.model": "MacBookAir10,1",
+    "hw.machine": "arm64",
+    "hw.physicalcpu": "8",
+    "hw.logicalcpu": "8",
+    "hw.memsize": "17179869184",
+    "hw.cachelinesize": "128",
+    "hw.l1dcachesize": "65536",
+    "hw.l1icachesize": "131072",
+    "hw.l2cachesize": "4194304",
+    "hw.l3cachesize": "",
+    "hw.cpufrequency": "",
+    "hw.cpufrequency_max": "",
+    "hw.cpufrequency_min": "",
+    "hw.nperflevels": "2",
+    "hw.perflevel0.name": "Performance",
+    "hw.perflevel0.physicalcpu": "4",
+    "hw.perflevel0.logicalcpu": "4",
+    "hw.perflevel0.cpusperl2": "4",
+    "hw.perflevel0.l1dcachesize": "131072",
+    "hw.perflevel0.l1icachesize": "196608",
+    "hw.perflevel0.l2cachesize": "12582912",
+    "hw.perflevel0.cpufrequency": null,
+    "hw.perflevel0.cpufrequency_max": null,
+    "hw.perflevel1.name": "Efficiency",
+    "hw.perflevel1.physicalcpu": "4",
+    "hw.perflevel1.logicalcpu": "4",
+    "hw.perflevel1.cpusperl2": "4",
+    "hw.perflevel1.l1dcachesize": "65536",
+    "hw.perflevel1.l1icachesize": "131072",
+    "hw.perflevel1.l2cachesize": "4194304",
+    "hw.perflevel1.cpufrequency": null,
+    "hw.perflevel1.cpufrequency_max": null
+  },
+  "hardware": {
+    "machine_name": "MacBook Air",
+    "machine_model": "MacBookAir10,1",
+    "chip_type": "Apple M1",
+    "number_processors": "proc 8:4:4",
+    "physical_memory": "16 GB"
+  },
+  "os_version": {
+    "command": [
+      "/usr/bin/sw_vers"
+    ],
+    "returncode": 0,
+    "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t15.1.1\nBuildVersion:\t\t24B91",
+    "stderr": ""
+  },
+  "affinity": "OS-managed; no core pinning claimed",
+  "frequency_note": "sysctl frequency values may be unavailable; no load-clock value is inferred",
+  "user_supplied_hardware": {
+    "model": "MacBookAir10,1",
+    "chip": "Apple M1",
+    "performance_cores": 4,
+    "efficiency_cores": 4,
+    "physical_cores": 8,
+    "logical_cores": 8,
+    "memory_gb": 16
+  },
+  "compiler": {
+    "command": [
+      "/opt/homebrew/opt/llvm/bin/clang",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "Homebrew clang version 23.1.5\nTarget: arm64-apple-darwin24.1.0\nThread model: posix\nInstalledDir: /opt/homebrew/Cellar/llvm/23.1.5/bin\nConfiguration file: /opt/homebrew/Cellar/llvm/23.1.5/etc/clang/arm64-apple-darwin24.cfg",
+    "stderr": ""
+  },
+  "thread_counts": [
+    1,
+    2,
+    4,
+    6,
+    8
+  ],
+  "trials_per_configuration": 3
+}

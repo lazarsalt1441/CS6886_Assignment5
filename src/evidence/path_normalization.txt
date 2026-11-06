@@ -1,0 +1,1 @@
+Absolute assignment-root paths in native logs/commands are replaced by <assignment_root>. Numerical measurements and source/input hashes are unchanged.

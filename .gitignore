@@ -1,0 +1,11 @@
+build/
+output/
+__pycache__/
+*.py[cod]
+.DS_Store
+Mac_Results/
+Mac_Results.zip
+*.aux
+*.log
+*.out
+!src/evidence/mac_run/run.log

@@ -1,0 +1,882 @@
+[
+  {
+    "variant": "naive",
+    "N": 1024,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      110.795,
+      109.357,
+      106.147
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "naive",
+    "N": 2048,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      451.06,
+      455.166,
+      447.552
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "naive",
+    "N": 4096,
+    "d": 128,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      3892.855,
+      3948.383,
+      3947.96
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "naive",
+    "N": 4096,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/naive",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/naive_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      1845.16,
+      1826.749,
+      1836.944
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "loops",
+    "N": 1024,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      15.824,
+      15.915,
+      16.0
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "loops",
+    "N": 2048,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      63.403,
+      62.165,
+      64.186
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "loops",
+    "N": 4096,
+    "d": 128,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      420.213,
+      419.289,
+      403.212
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "loops",
+    "N": 4096,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/loops",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/loops_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      254.304,
+      260.753,
+      260.289
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "tiled",
+    "N": 1024,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      14.37,
+      14.3,
+      16.234
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "tiled",
+    "N": 2048,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      60.005,
+      60.489,
+      60.017
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "tiled",
+    "N": 4096,
+    "d": 128,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      422.245,
+      422.234,
+      424.037
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "tiled",
+    "N": 4096,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/tiled",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/tiled_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      241.218,
+      239.65,
+      239.621
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "fused",
+    "N": 1024,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      15.778,
+      15.686,
+      15.761
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "fused",
+    "N": 2048,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      63.611,
+      63.077,
+      62.743
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "fused",
+    "N": 4096,
+    "d": 128,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      421.148,
+      420.205,
+      434.853
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "fused",
+    "N": 4096,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/fused",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/fused_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      257.615,
+      271.943,
+      274.053
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "best",
+    "N": 1024,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      4.825,
+      5.175,
+      5.692
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "best",
+    "N": 2048,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      19.217,
+      19.385,
+      19.304
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "best",
+    "N": 4096,
+    "d": 128,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      145.233,
+      137.706,
+      135.25
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "best",
+    "N": 4096,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/best",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/best_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      79.84,
+      81.288,
+      80.528
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 1024,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      6.031,
+      4.832,
+      4.76
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 2048,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      19.073,
+      19.094,
+      18.883
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 128,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      156.046,
+      146.068,
+      155.675
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 64,
+    "threads": 1,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      79.571,
+      83.119,
+      83.879
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 1024,
+    "d": 64,
+    "threads": 2,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      2.97,
+      2.668,
+      2.477
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "2",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 2048,
+    "d": 64,
+    "threads": 2,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      11.031,
+      11.168,
+      10.642
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "2",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 128,
+    "threads": 2,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      83.126,
+      91.341,
+      85.504
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "2",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 64,
+    "threads": 2,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      48.521,
+      72.518,
+      48.953
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "2",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 1024,
+    "d": 64,
+    "threads": 4,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      1.838,
+      1.802,
+      1.93
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 2048,
+    "d": 64,
+    "threads": 4,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      8.099,
+      8.239,
+      8.824
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 128,
+    "threads": 4,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      60.493,
+      59.697,
+      61.768
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 64,
+    "threads": 4,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      40.063,
+      33.71,
+      32.012
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 1024,
+    "d": 64,
+    "threads": 6,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      1.777,
+      1.613,
+      1.615
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "6",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 2048,
+    "d": 64,
+    "threads": 6,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      10.761,
+      9.52,
+      7.921
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "6",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 128,
+    "threads": 6,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      44.772,
+      69.514,
+      64.284
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "6",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 64,
+    "threads": 6,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      29.794,
+      31.112,
+      37.328
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "6",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 1024,
+    "d": 64,
+    "threads": 8,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N1024_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N1024_d64.bin"
+    ],
+    "trial_times_ms": [
+      1.592,
+      1.653,
+      1.522
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "8",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 2048,
+    "d": 64,
+    "threads": 8,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N2048_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N2048_d64.bin"
+    ],
+    "trial_times_ms": [
+      7.664,
+      5.773,
+      5.741
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "8",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 128,
+    "threads": 8,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d128.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d128.bin"
+    ],
+    "trial_times_ms": [
+      59.024,
+      57.451,
+      51.243
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "8",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  },
+  {
+    "variant": "omp",
+    "N": 4096,
+    "d": 64,
+    "threads": 8,
+    "command": [
+      "<assignment_root>/output/mac_run_20261106_175826/build/omp",
+      "<assignment_root>/input/qkv_N4096_d64.bin",
+      "<assignment_root>/output/mac_run_20261106_175826/outputs/omp_qkv_N4096_d64.bin"
+    ],
+    "trial_times_ms": [
+      26.335,
+      32.448,
+      25.365
+    ],
+    "environment": {
+      "OMP_NUM_THREADS": "8",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "FALSE"
+    },
+    "affinity": "OS-managed"
+  }
+]

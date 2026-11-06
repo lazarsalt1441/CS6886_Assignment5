@@ -1,0 +1,52 @@
+[
+  {
+    "kind": "bandwidth",
+    "threads": 1,
+    "stdout": "threads=1 median_s=0.007965088 bandwidth_gbs=50.552259 checksum=236894290.351539\n"
+  },
+  {
+    "kind": "bandwidth",
+    "threads": 2,
+    "stdout": "threads=2 median_s=0.007677078 bandwidth_gbs=52.448753 checksum=236894290.351539\n"
+  },
+  {
+    "kind": "bandwidth",
+    "threads": 4,
+    "stdout": "threads=4 median_s=0.009302139 bandwidth_gbs=43.286084 checksum=236894290.351539\n"
+  },
+  {
+    "kind": "bandwidth",
+    "threads": 6,
+    "stdout": "threads=6 median_s=0.009148836 bandwidth_gbs=44.011411 checksum=236894290.351539\n"
+  },
+  {
+    "kind": "bandwidth",
+    "threads": 8,
+    "stdout": "threads=8 median_s=0.009366035 bandwidth_gbs=42.990781 checksum=236894290.351539\n"
+  },
+  {
+    "kind": "compute_ceiling",
+    "threads": 1,
+    "stdout": "threads=1 median_s=0.017632008 achieved_fma_gflops=58.076200 checksum=367.673583984\n"
+  },
+  {
+    "kind": "compute_ceiling",
+    "threads": 2,
+    "stdout": "threads=2 median_s=0.021830797 achieved_fma_gflops=93.812424 checksum=735.347167969\n"
+  },
+  {
+    "kind": "compute_ceiling",
+    "threads": 4,
+    "stdout": "threads=4 median_s=0.031013012 achieved_fma_gflops=132.073596 checksum=1470.694335938\n"
+  },
+  {
+    "kind": "compute_ceiling",
+    "threads": 6,
+    "stdout": "threads=6 median_s=0.038047791 achieved_fma_gflops=161.481125 checksum=2206.041503906\n"
+  },
+  {
+    "kind": "compute_ceiling",
+    "threads": 8,
+    "stdout": "threads=8 median_s=0.044574022 achieved_fma_gflops=183.784177 checksum=2941.388671875\n"
+  }
+]

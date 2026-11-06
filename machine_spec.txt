@@ -1,0 +1,32 @@
+# Q1. Native Apple M1 measurement, 6 November 2026.
+# Measured sysctl values and external architecture references are distinguished.
+CPU model                       : Apple M1; MacBookAir10,1 (MacBook Air)
+Microarchitecture               : Firestorm P cores + Icestorm E cores
+Physical cores                  : 8
+Logical cores (hardware threads): 8; no SMT
+Performance / efficiency cores  : 4 performance / 4 efficiency (native sysctl)
+Base clock (GHz)                : N/A as a fixed base; DVFS; actual run frequency not collected
+Max single-core clock (GHz)     : Reference P=3.204, E=2.064 from Asahi/Linux T8103 operating points [3]
+All-core clock under load (GHz) : Not exposed by collected sysctl; not measured or inferred
+SIMD instruction set and width  : AArch64 Advanced SIMD (NEON), 128 bit, 4 FP32 lanes
+FMA units per core              : P: 4 x 128-bit-equivalent FMLA/cycle; E: 2 (research measurements [2])
+Vector registers per core       : 32 architectural 128-bit vector registers
+L1 data cache (per core)        : P=128 KiB, E=64 KiB (native perflevel sysctl)
+L2 cache (size, shared by)      : P cluster=12 MiB / 4 P cores; E cluster=4 MiB / 4 E cores
+L3 cache (size, shared by)      : N/A as a reported conventional CPU L3; system-level cache not identified by this probe
+Cache line size (bytes)         : 128 (native hw.cachelinesize)
+RAM size (GB)                   : 16 GiB = 17.179869184 decimal GB; unified memory
+RAM type, speed (MT/s), channels: Platform reference LPDDR4X-4266; 128-bit aggregate bus model (2 x 64-bit equivalent); physical subchannels not probed [4]
+Operating system                : macOS 15.1.1 (24B91), arm64, native execution
+Compiler and version            : Homebrew Clang 23.1.5; -O3 -mcpu=apple-m1 -fopenmp-simd; -fopenmp for omp
+
+# Derived theoretical/reference values (upper bounds, not measured run clocks)
+Peak FP32 GFLOP/s, one core     : P=3.204 x 4 FMLA/cycle x 4 lanes x 2 = 102.528000; E=2.064 x 2 x 4 x 2 = 33.024000
+Peak FP32 GFLOP/s, all cores    : 4 x 102.528000 + 4 x 33.024000 = 542.208000
+Memory bandwidth (GB/s)         : Reference 4266 MT/s x (128/8) B = 68.256000; measured best=52.448753 at 2t
+Measured BW, one/eight threads  : 50.552259 / 42.990781 GB/s; useful bytes only, 384 MiB cached-store triad
+Ridge point, one core (FLOP/B)  : P/theoretical BW=1.502110; P/measured 1t BW=2.028159
+Ridge point, all cores (FLOP/B) : All/theoretical BW=7.943741; All/measured 8t BW=12.612192
+Achieved FMA rate, one/all cores: 58.076200 / 183.784177 GFLOP/s (separate workload, not a hard ceiling)
+
+# References: see report.pdf and src/references.md. No sustained clock is fabricated.

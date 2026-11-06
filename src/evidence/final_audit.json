@@ -1,0 +1,10 @@
+{
+  "native_source_hashes_verified": 14,
+  "original_drivers_unchanged": 6,
+  "timing_configurations": 40,
+  "driver_invocations_per_configuration": 3,
+  "independent_fp64_checks": 72,
+  "max_error_vs_naive": 4.730929066420798e-06,
+  "benchmarks_recomputed_on_host": false,
+  "report_uses": "native M1 data only"
+}
