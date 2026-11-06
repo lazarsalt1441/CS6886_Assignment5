@@ -48,11 +48,3 @@ clocks/core placement are unmeasured; no exact sustained frequency is invented.
 Arithmetic intensity is an analytical DRAM traffic model, not hardware-counter
 measurement. The independent FMA test is achieved throughput, not a hard ceiling.
 
-Local assignment-root paths in the included logs are normalised to
-`<assignment_root>` for portability. Native measurements and source hashes are
-unchanged. No cloud timings are mixed into these deliverables.
-
-Submission repository: https://github.com/lazarsalt1441/CS6886_Assignment5
-
-The contents of this repository follow the assignment-root structure required
-by the handout.
