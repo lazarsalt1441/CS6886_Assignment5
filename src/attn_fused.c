@@ -9,9 +9,17 @@
 #include <omp.h>
 #endif
 
-/* Q3: fused; driver below is unchanged from the starter. */
+#ifndef ATTENTION_REGISTER_ROWS
+#define ATTENTION_REGISTER_ROWS 4
+#endif
+#include "best_kernel.h"
+
+/* Q3: blocked online fusion; driver below is unchanged from the starter. */
 void attention(const float *Q,const float *K,const float *V,float *O,int N,int d)
 {
+#ifndef ATTENTION_LEGACY
+    online_attention(Q,K,V,O,N,d,0);
+#else
     const float scale=1.0f/sqrtf((float)d);
     /* Only one N-element row survives: no full N-by-N score matrix. */
     float *row=malloc((size_t)N*sizeof(float));
@@ -34,6 +42,7 @@ void attention(const float *Q,const float *K,const float *V,float *O,int N,int d
         }
     }
     free(row);
+#endif
 }
 
 /* ------------------------------------------------------------------------- */

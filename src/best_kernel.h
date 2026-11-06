@@ -245,7 +245,7 @@ static void values(const float *S,const float *V,float *O,int start,int rows,int
 #define QUERY_BLOCK 64
 #endif
 #endif
-static void best_attention(const float *Q,const float *K,const float *V,float *O,int N,int d,int parallel)
+static inline void materialized_attention(const float *Q,const float *K,const float *V,float *O,int N,int d,int parallel)
 {
     float *T=malloc((size_t)d*N*sizeof(float));
     if(!T){fprintf(stderr,"allocation failed\n");exit(1);}
@@ -270,5 +270,14 @@ static void best_attention(const float *Q,const float *K,const float *V,float *O
     }
     free(T);
     (void)parallel;
+}
+#include "online_kernel.h"
+static inline void best_attention(const float *Q,const float *K,const float *V,float *O,int N,int d,int parallel)
+{
+#ifdef ATTENTION_LEGACY
+    materialized_attention(Q,K,V,O,N,d,parallel);
+#else
+    online_attention(Q,K,V,O,N,d,parallel);
+#endif
 }
 #endif

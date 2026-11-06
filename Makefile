@@ -18,16 +18,19 @@ endif
 OMP = -fopenmp
 INPUTS = $(sort $(wildcard input/*.bin))
 VARIANTS = naive loops tiled fused best omp
+.DEFAULT_GOAL := all
 OMP_NUM_THREADS ?= 8
 export OMP_NUM_THREADS
+-include output/kernel_config.mk
+build/best build/omp: EXTRA_CFLAGS = $(KERNEL_CFLAGS)
 
 all: $(VARIANTS)
 build output:
 	mkdir -p $@
-build/omp: src/attn_omp.c src/best_kernel.h src/neon_kernel.h | build output
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(OMP) $< -o $@ $(LDFLAGS) $(LDLIBS)
-build/%: src/attn_%.c src/best_kernel.h src/neon_kernel.h | build output
-	$(CC) $(CPPFLAGS) $(CFLAGS) $< -o $@ $(LDFLAGS) $(LDLIBS)
+build/omp: src/attn_omp.c src/best_kernel.h src/neon_kernel.h src/online_kernel.h $(wildcard output/kernel_config.mk) | build output
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXTRA_CFLAGS) $(OMP) $< -o $@ $(LDFLAGS) $(LDLIBS)
+build/%: src/attn_%.c src/best_kernel.h src/neon_kernel.h src/online_kernel.h $(wildcard output/kernel_config.mk) | build output
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) $(LDLIBS)
 naive loops tiled fused best omp: %: build/%
 	@set -e; for f in $(INPUTS); do ./build/$@ "$$f" "output/$@_$$(basename "$$f")"; done
 compile: $(addprefix build/,$(VARIANTS))

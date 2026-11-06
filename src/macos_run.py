@@ -6,6 +6,7 @@ from pathlib import Path
 import argparse,csv,datetime,hashlib,json,os,platform,re,shutil,statistics,subprocess,sys,time,zipfile
 from check_outputs import load,relative_error,check
 from edge_check import run_edges
+from benchmark_tools import tune_kernel,compare_legacy,profile_kernel
 
 ROOT=Path(__file__).resolve().parents[1]
 VARIANTS=['naive','loops','tiled','fused','best','omp']
@@ -44,7 +45,7 @@ def toolchain():
     return str(cc),['-I'+str(inc),'-L'+str(lib),'-Wl,-rpath,'+str(lib)]
 
 def intensity(v,n,d):
-    bytes_=16*n*n+16*n*d if v=='naive' else (16*n*n+24*n*d if v in ['loops','tiled'] else (16*n*d if v=='fused' else 24*n*d))
+    bytes_=16*n*n+16*n*d if v=='naive' else (16*n*n+24*n*d if v in ['loops','tiled'] else 24*n*d)
     return 4.0*n*n*d/bytes_
 
 def execute(cmd,env,log):
@@ -54,7 +55,11 @@ def execute(cmd,env,log):
     return p.stdout
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--trials',type=int,default=3);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--trials',type=int,default=3)
+    parser.add_argument('--tune',action='store_true',help='Measure ten cache/register tiles before choosing the best/omp configuration')
+    parser.add_argument('--compare-legacy',action='store_true',help='Measure previous and current kernels in alternating order')
+    parser.add_argument('--profile',action='store_true',help='Collect separate instrumented single-thread phase timings')
+    args=parser.parse_args()
     if args.trials<1:raise RuntimeError('--trials must be positive')
     if platform.system()!='Darwin' or platform.machine()!='arm64':
         raise RuntimeError('Run natively on your M1 Mac in an arm64 Terminal. This is not a Linux or Rosetta benchmark.')
@@ -81,6 +86,15 @@ def main():
     (evidence/'compile_commands.json').write_text(json.dumps(commands,indent=2))
     inputs=sorted((ROOT/'input').glob('*.bin'))
     if len(inputs)!=4:raise RuntimeError('Expected the four official input files')
+    flags=[]
+    if not args.tune:
+        (ROOT/'output/kernel_config.mk').write_text('# Default untuned kernel for this run\nKERNEL_CFLAGS :=\n')
+    if args.tune:
+        flags=tune_kernel(cc,common,omp_paths,build,inputs,binaries,env,log,execute,commands,evidence)
+        for v in ['best','omp']:
+            cmd=[cc,*common,*omp_paths,*flags,*(['-fopenmp'] if v=='omp' else []),ROOT/f'src/attn_{v}.c','-o',binaries[v],'-lm','-lomp']
+            commands.append(list(map(str,cmd)));execute(cmd,env,log)
+    (evidence/'kernel_config.json').write_text(json.dumps(dict(best_flags=flags,fused_query_tile=48,fused_key_tile=128,fused_register_rows=4,tuned=args.tune),indent=2))
     physical=int(machine['sysctl'].get('hw.logicalcpu') or '8')
     thread_counts=sorted({t for t in [1,2,4,6,8,physical] if t<=physical})
     rows=[];raw=[]
@@ -114,15 +128,23 @@ def main():
     shutil.copyfile(evidence/'results.csv',ROOT/'results.csv')
     check(ROOT/'input',outputs)
     run_edges(binaries,env,evidence=evidence/'edge_checks.json')
+    env['OMP_NUM_THREADS']='1'
+    if args.compare_legacy:
+        compare_legacy(cc,common,omp_paths,build,inputs,binaries,env,log,execute,commands,evidence,outputs,args.trials)
+    if args.profile:
+        profile_kernel(cc,common,omp_paths,build,inputs,flags,env,log,execute,commands,evidence,outputs)
     micro=[]
     for name in ['bandwidth','compute_ceiling']:
       for t in thread_counts:
         env['OMP_NUM_THREADS']=str(t);out=execute([build/name],env,log);print(out.strip(),flush=True)
         micro.append(dict(kind=name,threads=t,stdout=out))
     (evidence/'microbenchmarks.json').write_text(json.dumps(micro,indent=2))
-    hashes={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [*inputs,*sorted((ROOT/'src').glob('*.c')),*sorted((ROOT/'src').glob('*.h'))]}
+    (evidence/'compile_commands.json').write_text(json.dumps(commands,indent=2))
+    measured_python=['macos_run.py','benchmark_tools.py','edge_check.py','check_outputs.py']
+    hashes={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [*inputs,*sorted((ROOT/'src').glob('*.c')),*sorted((ROOT/'src').glob('*.h')),*[ROOT/'src'/name for name in measured_python]]}
     (evidence/'source_and_input_hashes.json').write_text(json.dumps(hashes,indent=2))
     machine['thread_counts']=thread_counts;machine['trials_per_configuration']=args.trials
+    machine['kernel_config']=json.loads((evidence/'kernel_config.json').read_text())
     (evidence/'machine.json').write_text(json.dumps(machine,indent=2))
     bundle=ROOT/'Mac_Results.zip'
     with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as z:

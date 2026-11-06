@@ -1,0 +1,55 @@
+{
+  "architecture": "x86_64",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "native_m1_measurement": false,
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+  "tested_best_flags": [
+    "-DATTENTION_QUERY_TILE=96",
+    "-DATTENTION_KEY_TILE=128",
+    "-DATTENTION_REGISTER_ROWS=6"
+  ],
+  "normal_flags": [
+    "-O3",
+    "-march=native",
+    "-fopenmp-simd"
+  ],
+  "note": "Linux x86 development validation only. Not M1 report or CSV data.",
+  "timestamp_utc": "2026-11-06T15:58:20.314065+00:00",
+  "tolerance": 0.0001,
+  "official_output_comparisons_passed": 20,
+  "reference_checks": {
+    "fp64": {
+      "count": 168,
+      "max_relative_error": 3.057619818011489e-05
+    },
+    "scalar": {
+      "count": 42,
+      "max_relative_error": 1.919442386578549e-05
+    },
+    "sanitizer": {
+      "count": 105,
+      "max_relative_error": 1.919442386578549e-05
+    }
+  },
+  "sanitizers": "AddressSanitizer and UndefinedBehaviorSanitizer; leak detection disabled because LeakSanitizer cannot run under this environment ptrace wrapper.",
+  "native_runner_tools": "Ten candidate tuning settings executed in two rounds; paired comparison and separate phase profiling exercised on the host using gcc (the Mac-only libomp link flag was omitted).",
+  "latex_check": "Python template syntax checked. A PDF render was unavailable because the local pdflatex format file is missing; no replacement PDF was generated.",
+  "source_sha256": {
+    "src/attn_best.c": "f056535237dadc719d69f502eef7c02713a7da5969ebc419eab85a1678d61db4",
+    "src/attn_fused.c": "5e27f300ad3fc2e2a6de4e1b6ede05da9311be3fe78fabc96673297bdc8c035c",
+    "src/attn_loops.c": "61a7be506cfbf97b09dd34a8157f40ce660e4b37824bf7c8a5b56438497ceca0",
+    "src/attn_naive.c": "f67ef44428ed27118928503632ddf0bc41c5026f992cf1e6e156ad8f738d19f1",
+    "src/attn_omp.c": "c34e4d1341d654b71abc74a1e0a5af99a15cd05b5da2258ae25ecc3ac462723a",
+    "src/attn_tiled.c": "285e49fb5d34d02eb9a65df5b16c6196a61b5d662ebc84717a1c1da7c6a09ae3",
+    "src/bandwidth.c": "9a9a10ebf5e497447d6c97e01390b36bdbd4e5cdeea9f9b2bab458548665f434",
+    "src/compute_ceiling.c": "aa1a37ab80674f987adb3d0349f1352b8359c7bc147db43ededd0e3d04144613",
+    "src/best_kernel.h": "812338508a01e8a02fe7bd988be04c726770e6a0b35ac1c4f63634d289b65d47",
+    "src/neon_kernel.h": "cf7c80f13b6a5a5d36290ecc318936b806ffb9517753d16c4c9f9362272e26ca",
+    "src/online_kernel.h": "e73d0f7c9a2f0f28dce13dba7aedf384202110959435f4ff5df6ce703230cf15",
+    "src/macos_run.py": "0d499298a9861714ecd6303bd3a8b4e9bd57f8dfbe328bde1aeb8aecd86deb64",
+    "src/benchmark_tools.py": "8761fec5acc05121e63e5c39b9fae4f74ba268284bd02dfc627a70d44c4cf94d",
+    "src/edge_check.py": "6163189ff38e87184ec89e5dbc0994cd768a3b9a5169ade5c1e7effeac2decc0",
+    "src/check_outputs.py": "a15e138149b33c830dc9a99e62a0d172ef2423062b6fc8d608eb948730d57d62"
+  }
+}

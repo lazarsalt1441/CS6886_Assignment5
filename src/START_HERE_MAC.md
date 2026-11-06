@@ -3,8 +3,9 @@
 Your hardware: MacBookAir10,1, Apple M1, 4 performance + 4 efficiency cores,
 8 physical / 8 logical cores, 16 GB unified memory.
 
-The compute kernels now include an explicit AArch64 NEON fast path. The included report and plots use the completed native M1 run. Earlier cloud CPU
-timings are excluded. Rerunning the controller collects a fresh result ZIP.
+The new online kernels include an explicit AArch64 NEON fast path. The archived
+native run predates this optimisation. The current `report.pdf` is the owner's
+uploaded replacement; collect a fresh result ZIP before updating its speed claims.
 
 ## Run
 
@@ -19,7 +20,7 @@ timings are excluded. Rerunning the controller collects a fresh result ZIP.
 4. Run the complete collection:
 
    ```sh
-   bash src/run_macos.sh
+   bash src/run_macos.sh --tune --compare-legacy --profile
    ```
 
 5. Upload the generated **Mac_Results.zip** from the assignment directory.
@@ -41,6 +42,15 @@ It does not need sudo or change global compiler/Python settings.
   `1e-4` relative-max tolerance; missing, truncated and non-finite outputs fail.
 - Checks SIMD tails, uniform logits, and large logits against independent FP64
   attention implemented with Python's standard library.
+- Adds boundary cases at 127/128/129 and multiple key tiles, plus early/late
+  maximum changes and constant/zero values: 168 FP64 checks in total.
+- Measures ten cache/register tile configurations in two reversed-order rounds
+  and applies the selected flags to both `best` and `omp`. `fused` uses 48x128
+  cache tiles and four register rows. The local choice is retained in
+  `output/kernel_config.mk` for subsequent Makefile builds.
+- With `--compare-legacy`, runs previous and new fused/best kernels in alternating
+  order. With `--profile`, collects separate single-thread packing, matrix-product
+  and softmax timings. Profiling overhead is not mixed into `results.csv`.
 - Measures sustained memory bandwidth with a 384 MiB triad, and achieved FP32
   FMA throughput with an independent NEON microbenchmark.
 - Collects allowlisted hardware/cache information, compiler version, commands,

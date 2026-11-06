@@ -1,0 +1,500 @@
+{
+  "architecture": "x86_64",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "native_m1_measurement": false,
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+  "tested_best_flags": [
+    "-DATTENTION_QUERY_TILE=96",
+    "-DATTENTION_KEY_TILE=128",
+    "-DATTENTION_REGISTER_ROWS=6"
+  ],
+  "normal_flags": [
+    "-O3",
+    "-march=native",
+    "-fopenmp-simd"
+  ],
+  "note": "Linux x86 development validation only. Not M1 report or CSV data.",
+  "records": [
+    {
+      "variant": "fused",
+      "input": "qkv_N1024_d64.bin",
+      "representative": {
+        "pack_ms": 0.033725,
+        "scores_ms": 1.559188,
+        "softmax_ms": 0.502093,
+        "values_ms": 1.730957,
+        "total_ms": 3.846215
+      },
+      "matmul_percent": 85.54240987568298,
+      "softmax_percent": 13.054210438054035,
+      "scores_gflops": 86.08181181486773,
+      "values_gflops": 77.53960843625809,
+      "raw": [
+        {
+          "pack_ms": 0.156757,
+          "scores_ms": 0.840877,
+          "softmax_ms": 0.646438,
+          "values_ms": 1.407177,
+          "total_ms": 3.099005
+        },
+        {
+          "pack_ms": 0.298137,
+          "scores_ms": 1.03497,
+          "softmax_ms": 0.541124,
+          "values_ms": 1.149024,
+          "total_ms": 3.048278
+        },
+        {
+          "pack_ms": 0.031617,
+          "scores_ms": 1.690129,
+          "softmax_ms": 0.476897,
+          "values_ms": 2.258251,
+          "total_ms": 4.476967
+        },
+        {
+          "pack_ms": 0.033725,
+          "scores_ms": 1.559188,
+          "softmax_ms": 0.502093,
+          "values_ms": 1.730957,
+          "total_ms": 3.846215
+        },
+        {
+          "pack_ms": 0.05613,
+          "scores_ms": 2.100316,
+          "softmax_ms": 0.59866,
+          "values_ms": 1.075104,
+          "total_ms": 3.850038
+        },
+        {
+          "pack_ms": 0.02585,
+          "scores_ms": 1.020772,
+          "softmax_ms": 0.620075,
+          "values_ms": 1.052132,
+          "total_ms": 2.737785
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "fused",
+      "input": "qkv_N2048_d64.bin",
+      "representative": {
+        "pack_ms": 0.208767,
+        "scores_ms": 4.826221,
+        "softmax_ms": 2.319197,
+        "values_ms": 5.76535,
+        "total_ms": 13.188989
+      },
+      "matmul_percent": 80.30616296669896,
+      "softmax_percent": 17.584342514805343,
+      "scores_gflops": 111.24043262834421,
+      "values_gflops": 93.1202636440112,
+      "raw": [
+        {
+          "pack_ms": 0.359077,
+          "scores_ms": 3.822932,
+          "softmax_ms": 2.595042,
+          "values_ms": 5.229964,
+          "total_ms": 12.115765
+        },
+        {
+          "pack_ms": 0.192613,
+          "scores_ms": 5.058951,
+          "softmax_ms": 2.972637,
+          "values_ms": 5.23229,
+          "total_ms": 13.536196
+        },
+        {
+          "pack_ms": 0.051814,
+          "scores_ms": 7.31713,
+          "softmax_ms": 2.171225,
+          "values_ms": 4.562016,
+          "total_ms": 14.172284
+        },
+        {
+          "pack_ms": 0.555013,
+          "scores_ms": 5.537856,
+          "softmax_ms": 2.154475,
+          "values_ms": 4.701074,
+          "total_ms": 13.018492
+        },
+        {
+          "pack_ms": 0.051572,
+          "scores_ms": 4.868766,
+          "softmax_ms": 2.136369,
+          "values_ms": 5.470327,
+          "total_ms": 12.597407
+        },
+        {
+          "pack_ms": 0.208767,
+          "scores_ms": 4.826221,
+          "softmax_ms": 2.319197,
+          "values_ms": 5.76535,
+          "total_ms": 13.188989
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "fused",
+      "input": "qkv_N4096_d128.bin",
+      "representative": {
+        "pack_ms": 0.899963,
+        "scores_ms": 57.356718,
+        "softmax_ms": 16.003169,
+        "values_ms": 72.139351,
+        "total_ms": 146.960281
+      },
+      "matmul_percent": 88.11637274972276,
+      "softmax_percent": 10.889451824061224,
+      "scores_gflops": 74.88167813228085,
+      "values_gflops": 59.53709364532542,
+      "raw": [
+        {
+          "pack_ms": 1.345707,
+          "scores_ms": 44.507671,
+          "softmax_ms": 10.723915,
+          "values_ms": 63.707511,
+          "total_ms": 120.879358
+        },
+        {
+          "pack_ms": 2.189619,
+          "scores_ms": 60.208894,
+          "softmax_ms": 11.457777,
+          "values_ms": 81.261375,
+          "total_ms": 155.436866
+        },
+        {
+          "pack_ms": 0.597118,
+          "scores_ms": 64.846773,
+          "softmax_ms": 15.222296,
+          "values_ms": 85.618469,
+          "total_ms": 166.834027
+        },
+        {
+          "pack_ms": 1.662019,
+          "scores_ms": 54.400565,
+          "softmax_ms": 11.364959,
+          "values_ms": 71.671264,
+          "total_ms": 139.428586
+        },
+        {
+          "pack_ms": 0.965439,
+          "scores_ms": 50.216897,
+          "softmax_ms": 12.215802,
+          "values_ms": 68.12612,
+          "total_ms": 132.736343
+        },
+        {
+          "pack_ms": 0.899963,
+          "scores_ms": 57.356718,
+          "softmax_ms": 16.003169,
+          "values_ms": 72.139351,
+          "total_ms": 146.960281
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "fused",
+      "input": "qkv_N4096_d64.bin",
+      "representative": {
+        "pack_ms": 0.541463,
+        "scores_ms": 23.795133,
+        "softmax_ms": 12.583247,
+        "values_ms": 25.158016,
+        "total_ms": 62.862468
+      },
+      "matmul_percent": 77.87341247881008,
+      "softmax_percent": 20.017106232609258,
+      "scores_gflops": 90.24886089100657,
+      "values_gflops": 85.35981724473027,
+      "raw": [
+        {
+          "pack_ms": 0.578428,
+          "scores_ms": 22.936459,
+          "softmax_ms": 13.149395,
+          "values_ms": 23.165841,
+          "total_ms": 60.222625
+        },
+        {
+          "pack_ms": 0.502726,
+          "scores_ms": 23.28447,
+          "softmax_ms": 10.077959,
+          "values_ms": 27.339356,
+          "total_ms": 61.703064
+        },
+        {
+          "pack_ms": 1.769587,
+          "scores_ms": 31.939544,
+          "softmax_ms": 12.53045,
+          "values_ms": 30.487393,
+          "total_ms": 77.419052
+        },
+        {
+          "pack_ms": 0.340809,
+          "scores_ms": 21.835307,
+          "softmax_ms": 10.234127,
+          "values_ms": 24.68563,
+          "total_ms": 57.405804
+        },
+        {
+          "pack_ms": 0.184608,
+          "scores_ms": 25.300912,
+          "softmax_ms": 14.166654,
+          "values_ms": 29.191923,
+          "total_ms": 69.128345
+        },
+        {
+          "pack_ms": 0.541463,
+          "scores_ms": 23.795133,
+          "softmax_ms": 12.583247,
+          "values_ms": 25.158016,
+          "total_ms": 62.862468
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "best",
+      "input": "qkv_N1024_d64.bin",
+      "representative": {
+        "pack_ms": 0.033298,
+        "scores_ms": 1.007622,
+        "softmax_ms": 0.602853,
+        "values_ms": 0.971361,
+        "total_ms": 2.625667
+      },
+      "matmul_percent": 75.37067724124957,
+      "softmax_percent": 22.9599945461477,
+      "scores_gflops": 133.20245885857992,
+      "values_gflops": 138.17491952013722,
+      "raw": [
+        {
+          "pack_ms": 0.158932,
+          "scores_ms": 1.363553,
+          "softmax_ms": 0.656328,
+          "values_ms": 1.421323,
+          "total_ms": 3.643527
+        },
+        {
+          "pack_ms": 0.086572,
+          "scores_ms": 0.843238,
+          "softmax_ms": 0.587172,
+          "values_ms": 0.946656,
+          "total_ms": 2.479832
+        },
+        {
+          "pack_ms": 0.030873,
+          "scores_ms": 1.295861,
+          "softmax_ms": 0.48463,
+          "values_ms": 0.921771,
+          "total_ms": 2.74378
+        },
+        {
+          "pack_ms": 0.20739,
+          "scores_ms": 1.188862,
+          "softmax_ms": 0.681434,
+          "values_ms": 1.260057,
+          "total_ms": 3.34838
+        },
+        {
+          "pack_ms": 0.033298,
+          "scores_ms": 1.007622,
+          "softmax_ms": 0.602853,
+          "values_ms": 0.971361,
+          "total_ms": 2.625667
+        },
+        {
+          "pack_ms": 0.033236,
+          "scores_ms": 0.942111,
+          "softmax_ms": 0.556087,
+          "values_ms": 0.958434,
+          "total_ms": 2.500521
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "best",
+      "input": "qkv_N2048_d64.bin",
+      "representative": {
+        "pack_ms": 0.177461,
+        "scores_ms": 4.039319,
+        "softmax_ms": 2.497528,
+        "values_ms": 4.90886,
+        "total_ms": 11.670252
+      },
+      "matmul_percent": 76.67511378503224,
+      "softmax_percent": 21.400806083707533,
+      "scores_gflops": 132.91124370221812,
+      "values_gflops": 109.36773751950555,
+      "raw": [
+        {
+          "pack_ms": 0.383119,
+          "scores_ms": 6.660504,
+          "softmax_ms": 3.400703,
+          "values_ms": 5.506032,
+          "total_ms": 16.094716
+        },
+        {
+          "pack_ms": 0.177461,
+          "scores_ms": 4.039319,
+          "softmax_ms": 2.497528,
+          "values_ms": 4.90886,
+          "total_ms": 11.670252
+        },
+        {
+          "pack_ms": 0.067741,
+          "scores_ms": 4.925722,
+          "softmax_ms": 1.968025,
+          "values_ms": 4.143152,
+          "total_ms": 11.147173
+        },
+        {
+          "pack_ms": 0.065169,
+          "scores_ms": 4.915035,
+          "softmax_ms": 2.049662,
+          "values_ms": 4.625597,
+          "total_ms": 11.696112
+        },
+        {
+          "pack_ms": 0.066449,
+          "scores_ms": 4.216922,
+          "softmax_ms": 2.188527,
+          "values_ms": 4.286113,
+          "total_ms": 10.797875
+        },
+        {
+          "pack_ms": 0.065629,
+          "scores_ms": 3.677318,
+          "softmax_ms": 2.202743,
+          "values_ms": 5.685545,
+          "total_ms": 11.670703
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "best",
+      "input": "qkv_N4096_d128.bin",
+      "representative": {
+        "pack_ms": 2.622379,
+        "scores_ms": 42.644499,
+        "softmax_ms": 11.107949,
+        "values_ms": 51.479707,
+        "total_ms": 108.028103
+      },
+      "matmul_percent": 87.12937040095946,
+      "softmax_percent": 10.282462332972743,
+      "scores_gflops": 100.71562327417658,
+      "values_gflops": 83.43029800072483,
+      "raw": [
+        {
+          "pack_ms": 2.456596,
+          "scores_ms": 58.921022,
+          "softmax_ms": 11.368474,
+          "values_ms": 62.86636,
+          "total_ms": 136.886177
+        },
+        {
+          "pack_ms": 2.622379,
+          "scores_ms": 42.644499,
+          "softmax_ms": 11.107949,
+          "values_ms": 51.479707,
+          "total_ms": 108.028103
+        },
+        {
+          "pack_ms": 0.513342,
+          "scores_ms": 43.133683,
+          "softmax_ms": 9.732887,
+          "values_ms": 50.45483,
+          "total_ms": 103.996333
+        },
+        {
+          "pack_ms": 0.513347,
+          "scores_ms": 45.474327,
+          "softmax_ms": 10.32596,
+          "values_ms": 53.132579,
+          "total_ms": 109.610738
+        },
+        {
+          "pack_ms": 1.256689,
+          "scores_ms": 35.380406,
+          "softmax_ms": 8.617887,
+          "values_ms": 46.816117,
+          "total_ms": 92.231535
+        },
+        {
+          "pack_ms": 0.810493,
+          "scores_ms": 43.954465,
+          "softmax_ms": 12.138863,
+          "values_ms": 56.445933,
+          "total_ms": 113.512988
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    },
+    {
+      "variant": "best",
+      "input": "qkv_N4096_d64.bin",
+      "representative": {
+        "pack_ms": 0.209035,
+        "scores_ms": 26.991651,
+        "softmax_ms": 10.584384,
+        "values_ms": 28.130428,
+        "total_ms": 66.167597
+      },
+      "matmul_percent": 83.30675662892821,
+      "softmax_percent": 15.996325210359384,
+      "scores_gflops": 79.56103344697217,
+      "values_gflops": 76.34024082392206,
+      "raw": [
+        {
+          "pack_ms": 0.619753,
+          "scores_ms": 21.742319,
+          "softmax_ms": 11.563499,
+          "values_ms": 31.866005,
+          "total_ms": 66.044264
+        },
+        {
+          "pack_ms": 0.581543,
+          "scores_ms": 19.901907,
+          "softmax_ms": 13.790436,
+          "values_ms": 24.044531,
+          "total_ms": 58.505089
+        },
+        {
+          "pack_ms": 0.210062,
+          "scores_ms": 23.157504,
+          "softmax_ms": 14.929288,
+          "values_ms": 28.29548,
+          "total_ms": 66.797878
+        },
+        {
+          "pack_ms": 0.242044,
+          "scores_ms": 34.071732,
+          "softmax_ms": 19.454586,
+          "values_ms": 35.434516,
+          "total_ms": 89.391474
+        },
+        {
+          "pack_ms": 0.209035,
+          "scores_ms": 26.991651,
+          "softmax_ms": 10.584384,
+          "values_ms": 28.130428,
+          "total_ms": 66.167597
+        },
+        {
+          "pack_ms": 0.188655,
+          "scores_ms": 22.883557,
+          "softmax_ms": 12.636662,
+          "values_ms": 23.560179,
+          "total_ms": 59.426346
+        }
+      ],
+      "note": "Instrumented single-thread run includes timer overhead; not the results.csv timing."
+    }
+  ]
+}

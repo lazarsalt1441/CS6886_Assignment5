@@ -1,8 +1,11 @@
 # CS6886 Assignment 5: native Apple M1 submission
 
-The report, CSV and plots use the native MacBook Air run collected on 6 November
-2026. All four official inputs and the exact C/header sources match the returned
-SHA-256 hashes. Every original starter driver and naive source remain unchanged.
+The current code adds blocked online attention and optional native tile tuning.
+The archived CSV/plots and `src/evidence/mac_run/` describe the earlier M1 kernel;
+they are not measurements of this revision. `report.pdf` is the replacement PDF
+uploaded by the repository owner. Run the command below to measure the new code.
+The four official inputs, original naive implementation and all starter drivers
+are unchanged.
 
 ## Deliverables
 
@@ -19,6 +22,18 @@ SHA-256 hashes. Every original starter driver and naive source remain unchanged.
 
 ```sh
 brew install llvm libomp python
+bash src/run_macos.sh --tune --compare-legacy --profile
+```
+
+This creates `Mac_Results.zip`: all standard variant/thread measurements,
+168 independent FP64 checks, ten candidate tile configurations, paired previous
+versus new measurements, and separate instrumented phase profiles. Upload the ZIP
+to update the report with measured M1 results. No 50x or peak-utilisation claim is
+assumed in advance. See `src/OPTIMIZATION_NOTES.md` for the algorithm and tradeoffs.
+
+For the simpler build/check workflow:
+
+```sh
 make all
 make check
 make edge-check
@@ -35,10 +50,11 @@ runtimes, with no BLAS or external vector-math library.
 
 ```sh
 python3 -m pip install matplotlib numpy
-make report
+python3 src/finalize_mac.py --data output/mac_run_YYYYMMDD_HHMMSS
 ```
 
-This also requires pdflatex. Report regeneration checks all source/input hashes,
+Replace the timestamp with the fresh run directory; this also requires pdflatex.
+Report regeneration checks all source/input hashes,
 raw timing medians and GFLOP/s calculations before rebuilding. For another native
 run, use `python3 src/finalize_mac.py --data PATH_TO_RESULT_FOLDER`.
 
@@ -47,4 +63,3 @@ and instruction-throughput values for theoretical peak. Actual run-time CPU
 clocks/core placement are unmeasured; no exact sustained frequency is invented.
 Arithmetic intensity is an analytical DRAM traffic model, not hardware-counter
 measurement. The independent FMA test is achieved throughput, not a hard ceiling.
-

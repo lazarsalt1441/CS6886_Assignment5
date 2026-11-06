@@ -8,6 +8,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
+from edge_check import CASES
 
 ROOT=Path(__file__).resolve().parents[1]
 P_PEAK=3.204*4*4*2   # cited reference operating point and measured instruction throughput
@@ -53,7 +54,7 @@ def load_data(data):
         r['peak_model_gflops']=peak_model(r['threads'])
         r['percent_of_peak_model']=100*r['gflops']/r['peak_model_gflops']
         r['peak_model_basis']='P-first reference upper bound; OS placement/frequencies unmeasured'
-    if len(rows)!=40 or len(edges)!=72:raise RuntimeError('Incomplete expected run')
+    if len(rows)!=40 or len(edges)!=8*len(CASES):raise RuntimeError('Incomplete expected run')
     for r in rows:
         n=next(x for x in rows if (x['variant'],x['N'],x['d'])==('naive',r['N'],r['d']))
         assert math.isclose(n['time_ms']/r['time_ms'],r['speedup_over_naive'])
@@ -111,6 +112,9 @@ def plots(rows,raw,bw,compute):
 
 def machine_spec(machine,bw,compute):
     b1=dict(bw)[1];b8=dict(bw)[8];best=max(b for _,b in bw)
+    best_threads=max(bw,key=lambda x:x[1])[0]
+    observed_os='; '.join(machine.get('os_version',{}).get('stdout','not collected').splitlines())
+    observed_compiler=machine.get('compiler',{}).get('stdout','not collected').splitlines()[0]
     return f'''# Q1. Native Apple M1 measurement, 6 November 2026.
 # Measured sysctl values and external architecture references are distinguished.
 CPU model                       : Apple M1; MacBookAir10,1 (MacBook Air)
@@ -130,13 +134,13 @@ L3 cache (size, shared by)      : N/A as a reported conventional CPU L3; system-
 Cache line size (bytes)         : 128 (native hw.cachelinesize)
 RAM size (GB)                   : 16 GiB = 17.179869184 decimal GB; unified memory
 RAM type, speed (MT/s), channels: Platform reference LPDDR4X-4266; 128-bit aggregate bus model (2 x 64-bit equivalent); physical subchannels not probed [4]
-Operating system                : macOS 15.1.1 (24B91), arm64, native execution
-Compiler and version            : Homebrew Clang 23.1.5; -O3 -mcpu=apple-m1 -fopenmp-simd; -fopenmp for omp
+Operating system                : {observed_os}; {machine.get('architecture','not collected')}, native execution
+Compiler and version            : {observed_compiler}; -O3 -mcpu=apple-m1 -fopenmp-simd; -fopenmp for omp
 
 # Derived theoretical/reference values (upper bounds, not measured run clocks)
 Peak FP32 GFLOP/s, one core     : P=3.204 x 4 FMLA/cycle x 4 lanes x 2 = {P_PEAK:.6f}; E=2.064 x 2 x 4 x 2 = {E_PEAK:.6f}
 Peak FP32 GFLOP/s, all cores    : 4 x {P_PEAK:.6f} + 4 x {E_PEAK:.6f} = {ALL_PEAK:.6f}
-Memory bandwidth (GB/s)         : Reference 4266 MT/s x (128/8) B = {BW_REFERENCE:.6f}; measured best={best:.6f} at 2t
+Memory bandwidth (GB/s)         : Reference 4266 MT/s x (128/8) B = {BW_REFERENCE:.6f}; measured best={best:.6f} at {best_threads}t
 Measured BW, one/eight threads  : {b1:.6f} / {b8:.6f} GB/s; useful bytes only, 384 MiB cached-store triad
 Ridge point, one core (FLOP/B)  : P/theoretical BW={P_PEAK/BW_REFERENCE:.6f}; P/measured 1t BW={P_PEAK/b1:.6f}
 Ridge point, all cores (FLOP/B) : All/theoretical BW={ALL_PEAK/BW_REFERENCE:.6f}; All/measured 8t BW={ALL_PEAK/b8:.6f}
@@ -165,14 +169,15 @@ def report(machine,rows,raw,edges,bw,compute):
     s=head+f'''
 At $N=4096,d=64$, naive attention takes {naive['time_ms']:.3f} ms. The best single-threaded
 variant takes {best['time_ms']:.3f} ms ({best['speedup_over_naive']:.2f}$\\times$ faster), and 8 OpenMP threads take
-{omp['time_ms']:.3f} ms ({omp['speedup_over_naive']:.2f}$\\times$ faster). All supplied-input checks and 72 independent
+{omp['time_ms']:.3f} ms ({omp['speedup_over_naive']:.2f}$\\times$ faster). All supplied-input checks and {len(edges)} independent
 FP64 checks pass. The C kernels use no BLAS or external vector-math library.
 
 \\question{{Q1. Machine and peak calculations}}
 The machine is a MacBook Air (MacBookAir10,1), with an Apple M1 and 16 GiB unified memory.
 Native \\texttt{{sysctl}} confirms four performance (P) cores and four efficiency (E) cores,
-eight physical/logical cores and no SMT. All timings are native arm64 on macOS 15.1.1,
-using Homebrew Clang 23.1.5 with \\texttt{{-O3 -mcpu=apple-m1 -fopenmp-simd}};
+eight physical/logical cores and no SMT. All timings are native arm64. The exact macOS
+and Homebrew LLVM versions are recorded in \\texttt{{machine.json}}; compilation uses
+\\texttt{{-O3 -mcpu=apple-m1 -fopenmp-simd}};
 only the OpenMP variant enables parallel OpenMP regions with \\texttt{{-fopenmp}}.
 '''
     s+=table(['Property','Value / evidence'],[
@@ -254,31 +259,40 @@ column access, but repeatedly updates score/output accumulators and retains the 
 
 \textbf{(b) Cache/register tiling.} Use $32\times128$ outer query/key tiles around $4\times32$
 local accumulator tiles. Four query rows reuse each key/value vector; complete reductions
-are kept in accumulators before storing results. It improves the $4096\times64$ case, but is
-slightly slower than loops at $4096\times128$ (422.245 vs 419.289 ms). Tiling therefore has
-shape-dependent benefits; local-array/control overhead can offset cache reuse. The difference
-is small and is not evidence of a fundamental regression without more trials.
+are kept in accumulators before storing results. The measured table gives the actual
+shape-dependent benefit; local-array/control overhead can offset cache reuse.
 
-\textbf{(c) Row fusion.} Compute one score row, stable softmax, and its output immediately.
-At $N=4096$, score storage falls from 64 MiB to 16 KiB. This version is still slower than
-tiled at $d=64$: per-score dot reductions and lost multi-query reuse offset the storage saving.
-At $d=128$, loops/tiled/fused are all around 419--422 ms, rather than monotonically improving.
+\textbf{(c) Blocked online fusion.} Process 48 queries and 128 keys at a time.
+The score tile occupies 24 KiB instead of materialising the full $N\times N$ matrix.
+Keys are packed in key-block-major order, so the inner reduction stride is 128 rather
+than $N$. Four query rows reuse each vector of keys and values in register microkernels.
+For each row retain a running maximum $m$, denominator $l$ and unnormalised output $u$.
+For a score tile $s$, set
+\[
+m'=\max(m,\max s),\quad a=e^{m-m'},\quad p=e^{s-m'},\quad
+l'=al+\sum p,\quad u'=au+pV.
+\]
+Initialise $l=u=0$, then divide $u$ by $l$ once after the final key tile. Both the
+denominator and the old output numerator are rescaled when the maximum increases.
+Two independent four-lane NEON exponential evaluations handle eight scores per loop.
 
-\textbf{(d) Best M1 implementation.} Fuse blocks of 16 query rows; each NEON microkernel handles
-four query rows by 16 keys/features, using sixteen independent 128-bit accumulators. Reuse
-each loaded key/value vector across four queries and keep partial sums in registers.
-A custom vector exponential accelerates stable softmax. At $N=4096$, each block needs 256 KiB
-scratch, alongside 1 MiB of transposed keys and 1 MiB of values ($d=64$), fitting the P-cluster
-L2. Packing is still timed. Scalar tails handle odd dimensions; the AArch64 fast path was
-actually exercised in the submitted native Mac run. This is the best implemented/tested
-variant, without a claim of global optimality or a measured M1 block-size search.
+\textbf{(d) Best M1 implementation.} Use the same online kernel with configurable query,
+key and register tiles. The optional native tuner measures ten combinations of 24--96
+query rows, 64--256 keys, and four or six register rows. It selects one global setting
+by geometric mean over all four supplied shapes using two reversed-order rounds.
+The exact selected flags and trial timings are retained in the native evidence.
+Without tuning, best uses the conservative $48\times128$ / four-register-row setting.
+Packing, allocations and online rescaling remain inside the timed call. Tail paths
+handle dimensions that do not divide the register or cache tile sizes.
 
 The remaining limits include FMA/load/broadcast throughput, softmax, packing, cache traffic
-and OS scheduling. Exact bottleneck shares would require profiling beyond this run.
+and OS scheduling. Optional separate instrumented builds record phase shares and matrix
+throughput; these profiling timings are not substituted for uninstrumented CSV measurements.
 \newpage
 \question{Q4. OpenMP}
-The same compute kernel is used in \texttt{best} and \texttt{omp}. Key transposition is parallelised
-over two-dimensional tiles. Query blocks use \texttt{schedule(dynamic,1)}: workers own private
+The same compute kernel and selected tile flags are used in \texttt{best} and \texttt{omp}.
+Packing and query processing share one parallel region, with a barrier after key packing.
+Query blocks use \texttt{schedule(dynamic,1)}: workers own private
 scratch and disjoint output rows, and read shared keys/values. Dynamic block assignment lets
 faster workers take more work on the asymmetric 4P+4E CPU. There is no cross-thread output reduction.
 
@@ -296,8 +310,7 @@ For $N=4096,d=64$, eight threads yield {omp['parallel_speedup_vs_omp1']:.3f}$\\t
 {100*omp['parallel_efficiency']:.1f}\\% efficiency, or {omp['speedup_over_naive']:.2f}$\\times$ over naive.
 Eight identical full-speed cores would suggest an 8$\\times$ line, but this CPU has four slower
 E cores, shared caches/memory and scheduling overhead. That line is context, not an achievable
-P-core-only target. Six threads are slower than four for $2048\\times64$ and $4096\\times128$;
-eight are fastest for all four supplied shapes. The measurements show non-monotonic scaling,
+P-core-only target. The table records the actual per-shape ordering of thread counts,
 not which thread was on which core. Contention, dynamic scheduling, placement and thermal/DVFS
 effects are plausible contributors, not separately established causes.
 \\newpage
@@ -313,18 +326,17 @@ assumed cache-resident. Ignore write allocation and additional evictions. Hence 
 idealised intensities are not measured DRAM traffic and may overestimate actual intensity.
 '''
     ai=[]
-    for v,formula in [('naive',r'$16N^2+16Nd$'),('loops',r'$16N^2+24Nd$'),('tiled',r'$16N^2+24Nd$'),('fused',r'$16Nd$'),('best',r'$24Nd$'),('omp',r'$24Nd$')]:
+    for v,formula in [('naive',r'$16N^2+16Nd$'),('loops',r'$16N^2+24Nd$'),('tiled',r'$16N^2+24Nd$'),('fused',r'$24Nd$'),('best',r'$24Nd$'),('omp',r'$24Nd$')]:
         r=omp if v=='omp' else get(rows,v);ai.append([v if v!='omp' else 'omp (8t)',formula,f'{r["arithmetic_intensity_flop_per_byte"]:.3f}',f'{r["gflops"]:.2f}'])
     s+=table(['Variant','Modelled bytes','$I=F/B$ (FLOP/B)','GFLOP/s'],ai,align='llrr',size='footnotesize')
     s+=r'''
 The rooflines use $\min(BI,P)$ with Q1's reference peak and either measured sustained bandwidth
 or the explicitly assumed platform memory model. Serial points belong against the one-P-core
-curve; the OpenMP point uses the 4P+4E curve. All points are beyond the corresponding ridge.
-Thus modelled DRAM bandwidth is not the tight ceiling; this does not prove the kernels are
-purely compute-bound. Naive suffers reduction/stride/cache-level costs; loops exposes SIMD
-but repeats accumulator traffic; tiled reuses accumulators. Fused improves storage without
-equivalent multi-row arithmetic reuse. Best adds explicit SIMD/register tiling and faster
-softmax. OpenMP raises throughput but does not saturate the aggregate reference peak.
+curve; the OpenMP point uses the 4P+4E curve. Compare each measured point with its
+corresponding ridge; a high modelled intensity alone does not establish a purely compute-bound
+kernel. Naive suffers reduction/stride/cache-level costs; loops exposes SIMD but repeats
+accumulator traffic; tiled reuses accumulators. Online fused/best retain bounded score tiles,
+reuse key/value vectors across queries, and vectorise softmax. OpenMP adds parallel query work.
 \newpage
 \question{Validation, auxiliary measurements and reproduction}
 '''
@@ -332,8 +344,9 @@ softmax. OpenMP raises throughput but does not saturate the aggregate reference 
     s+=f'''
 \\textbf{{Validation.}} All 36 non-reference input/configuration rows pass the required
 $\\max|O-O_{{naive}}|/\\max|O_{{naive}}|\\le10^{{-4}}$, including all 20 OpenMP configurations.
-The worst supplied-input error is {maxerr:.3g}. All 72 independent FP64 checks pass, with a
-worst error of {edgeerr:.3g}; these include odd shapes, tails, zero/uniform logits and large logits.
+The worst supplied-input error is {maxerr:.3g}. All {len(edges)} independent FP64 checks pass, with a
+worst error of {edgeerr:.3g}; these include tile-boundary tails, early/late maximum changes,
+constant/zero values, zero/uniform logits and large logits.
 SHA-256 matches all returned C/header sources and four original inputs to the packaged files.
 The original naive source and all starter drivers are preserved. \\texttt{{make check}} rejects
 missing outputs, invalid headers/lengths, non-finite values and excessive error.

@@ -1,0 +1,172 @@
+{
+  "architecture": "x86_64",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "native_m1_measurement": false,
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+  "tested_best_flags": [
+    "-DATTENTION_QUERY_TILE=96",
+    "-DATTENTION_KEY_TILE=128",
+    "-DATTENTION_REGISTER_ROWS=6"
+  ],
+  "normal_flags": [
+    "-O3",
+    "-march=native",
+    "-fopenmp-simd"
+  ],
+  "note": "Linux x86 development validation only. Not M1 report or CSV data.",
+  "records": [
+    {
+      "input": "qkv_N1024_d64.bin",
+      "previous_variant": "legacy_fused",
+      "new_variant": "fused",
+      "previous_ms": 31.503,
+      "new_ms": 3.104,
+      "speedup": 10.14916237113402,
+      "previous_samples_ms": [
+        32.355,
+        29.683,
+        31.503
+      ],
+      "new_samples_ms": [
+        2.801,
+        3.148,
+        3.104
+      ],
+      "relative_max_error": 2.543645988556624e-06
+    },
+    {
+      "input": "qkv_N1024_d64.bin",
+      "previous_variant": "legacy_best",
+      "new_variant": "best",
+      "previous_ms": 3.921,
+      "new_ms": 2.574,
+      "speedup": 1.5233100233100234,
+      "previous_samples_ms": [
+        3.921,
+        4.007,
+        3.122
+      ],
+      "new_samples_ms": [
+        2.48,
+        2.574,
+        2.862
+      ],
+      "relative_max_error": 2.543645988556624e-06
+    },
+    {
+      "input": "qkv_N2048_d64.bin",
+      "previous_variant": "legacy_fused",
+      "new_variant": "fused",
+      "previous_ms": 136.885,
+      "new_ms": 13.103,
+      "speedup": 10.446844234144852,
+      "previous_samples_ms": [
+        129.19,
+        136.885,
+        138.347
+      ],
+      "new_samples_ms": [
+        13.739,
+        10.575,
+        13.103
+      ],
+      "relative_max_error": 3.9745597073479845e-06
+    },
+    {
+      "input": "qkv_N2048_d64.bin",
+      "previous_variant": "legacy_best",
+      "new_variant": "best",
+      "previous_ms": 15.605,
+      "new_ms": 12.73,
+      "speedup": 1.2258444619010211,
+      "previous_samples_ms": [
+        15.636,
+        15.605,
+        15.272
+      ],
+      "new_samples_ms": [
+        12.73,
+        10.991,
+        14.277
+      ],
+      "relative_max_error": 3.9745597073479845e-06
+    },
+    {
+      "input": "qkv_N4096_d128.bin",
+      "previous_variant": "legacy_fused",
+      "new_variant": "fused",
+      "previous_ms": 1282.298,
+      "new_ms": 140.186,
+      "speedup": 9.147118827843007,
+      "previous_samples_ms": [
+        1183.091,
+        1282.298,
+        1343.879
+      ],
+      "new_samples_ms": [
+        129.349,
+        952.227,
+        140.186
+      ],
+      "relative_max_error": 5.1969525486011204e-06
+    },
+    {
+      "input": "qkv_N4096_d128.bin",
+      "previous_variant": "legacy_best",
+      "new_variant": "best",
+      "previous_ms": 259.806,
+      "new_ms": 119.655,
+      "speedup": 2.171292465839288,
+      "previous_samples_ms": [
+        242.603,
+        679.112,
+        259.806
+      ],
+      "new_samples_ms": [
+        118.947,
+        123.69,
+        119.655
+      ],
+      "relative_max_error": 5.1969525486011204e-06
+    },
+    {
+      "input": "qkv_N4096_d64.bin",
+      "previous_variant": "legacy_fused",
+      "new_variant": "fused",
+      "previous_ms": 631.066,
+      "new_ms": 58.503,
+      "speedup": 10.786899817103397,
+      "previous_samples_ms": [
+        674.882,
+        625.946,
+        631.066
+      ],
+      "new_samples_ms": [
+        58.203,
+        63.271,
+        58.503
+      ],
+      "relative_max_error": 6.472175068064613e-06
+    },
+    {
+      "input": "qkv_N4096_d64.bin",
+      "previous_variant": "legacy_best",
+      "new_variant": "best",
+      "previous_ms": 81.267,
+      "new_ms": 54.072,
+      "speedup": 1.5029405237461162,
+      "previous_samples_ms": [
+        76.674,
+        81.267,
+        85.639
+      ],
+      "new_samples_ms": [
+        54.072,
+        59.761,
+        53.137
+      ],
+      "relative_max_error": 6.472175068064613e-06
+    }
+  ]
+}
